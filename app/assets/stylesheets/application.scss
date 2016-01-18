@@ -16,7 +16,31 @@
 
 .navbar-wrapper{
   padding-top: 30px;
+  position: absolute;
+  left: 0;
+  right: 0;
   .navbar.navbar-inverse{
     border-radius: 5px;
   }
+}
+#myCarousel{
+  .carousel-inner{
+    .item{
+      img{
+        width: 100%;
+        max-height: 600px;
+      }
+      h2{
+        font-size: 3.2em;
+      }
+    }
+  }
+}
+body.home{
+  .main-content{
+    padding-top: 0px;
+  }
+}
+.main-content{
+  padding-top: 80px;
 }
