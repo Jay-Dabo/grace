@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   def contact
     @body_class = "contact"
   end
+
+  def pricing
+    @body_class = "pricing"
+  end
 end
