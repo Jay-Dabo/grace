@@ -54,3 +54,15 @@ body.home{
 .main-content{
   padding-top: 80px;
 }
+.form-inputs{
+  input, textarea{
+    margin: 5px 0;
+  }
+}
+.btn{
+  &.block{
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
