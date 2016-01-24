@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Church, type: :model do
+  # Create a church to use with test
   let (:church) { Church.new }
 
   context "New Church without name or denomination" do
@@ -14,6 +15,7 @@ RSpec.describe Church, type: :model do
   end
 
   context "New Church with name and denomination" do
+    # Add name and denomination to test
     before do
       church.name = "SCCC"
       church.denomination = "Non-Denominational"

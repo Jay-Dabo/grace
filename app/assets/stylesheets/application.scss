@@ -58,6 +58,15 @@ body.home{
   input, textarea{
     margin: 5px 0;
   }
+  .radio_buttons{
+    label.radio_buttons{
+      display: block;
+    }
+    .radio{
+      display: inline-block;
+      width: 170px;
+    }
+  }
 }
 .btn{
   &.block{

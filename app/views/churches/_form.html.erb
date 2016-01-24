@@ -1,13 +1,14 @@
 <%= simple_form_for(@church) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :denomination %>
-    <%= f.input :church_image %>
-  </div>
+<div class="form-inputs">
+  <%= f.input :name, label: false, placeholder: "Church Name", required: true, input_html: { class: "form-control" } %>
+  <%= f.input :church_image, as: :file, input_html: { class: "form-control" } %>
+  <%= f.input :denomination, collection: denominations, as: :radio_buttons, required: true %>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<div class="form-actions">
+  <%= f.button :submit, class: "btn btn-info block" %>
+</div>
 <% end %>
+<div class="clearfix"></div>
