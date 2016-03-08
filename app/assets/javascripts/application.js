@@ -11,7 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+function flash_messages(){
+  setTimeout(function(){
+    jQuery('.alert.fade-out').fadeOut('slow');
+  }, 2500);
+}
+
+jQuery(document).ready(function(){
+  flash_messages();
+});

@@ -13,15 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
-.navbar-wrapper{
-  padding-top: 30px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  .navbar.navbar-inverse{
-    border-radius: 5px;
-  }
+body{
+  padding-top: 92px;
 }
 .flash-messages{
   position: absolute;
@@ -29,30 +22,6 @@
   left: 0;
   right: 0;
   z-index: 777;
-}
-#myCarousel{
-  .carousel-inner{
-    .item{
-      img{
-        width: 100%;
-        max-height: 600px;
-      }
-      h2{
-        font-size: 3.2em;
-      }
-      p{
-        font-size: 1.3em;
-      }
-    }
-  }
-}
-body.home{
-  .main-content{
-    padding-top: 0px;
-  }
-}
-.main-content{
-  padding-top: 80px;
 }
 .form-inputs{
   input, textarea{
@@ -73,5 +42,19 @@ body.home{
     display: block;
     width: 100%;
     text-align: center;
+  }
+}
+//Homepage Styles//
+.banner{
+  &.home{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    .banner-text{
+      position: relative;
+      z-index: 20;
+      padding: 140px 0 200px 0;
+    }
   }
 }
