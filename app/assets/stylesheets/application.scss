@@ -13,9 +13,29 @@
  *= require_tree .
  *= require_self
  */
+@import "variables";
+
+//General Styles//
 body{
   padding-top: 92px;
 }
+h1,h2,h3,h4,h5,h6{
+  font-family: $heading-font;
+}
+//Navigation Styles//
+#navbar{
+  margin-top: 25px;
+  ul{
+    li{
+      a{
+        font-family: $heading-font;
+        font-weight: 500;
+        font-size: 16px;
+      }
+    }
+  }
+}
+//Misu Styles//
 .flash-messages{
   position: absolute;
   top: 100px;
@@ -54,7 +74,15 @@ body{
     .banner-text{
       position: relative;
       z-index: 20;
-      padding: 140px 0 200px 0;
+      padding: 10% 0 20% 0;
+      h1{
+        font-weight: 900;
+        font-style: italic;
+        font-size: 3vw;
+        span{
+          font-weight: 500;
+        }
+      }
     }
   }
 }
