@@ -19,6 +19,14 @@
 body{
   padding-top: 92px;
   background: $lite-gray;
+  .main-content{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    p{
+      font-size: 18px;
+      line-height: 1.5em;
+    }
+  }
 }
 h1,h2,h3,h4,h5,h6{
   color: $blue;
@@ -96,13 +104,9 @@ a{
 //Homepage Styles//
 .banner{
   &.home{
-    position: absolute;
-    width: 100%;
-    height: auto;
-    z-index: 0;
+    background: url('banner-home.jpg') no-repeat bottom center;
+    background-size: cover;
     .banner-text{
-      position: relative;
-      z-index: 20;
       padding: 60px 0 60px 0;
       h1{
         font-weight: 900;
@@ -114,6 +118,16 @@ a{
           font-weight: 500;
         }
       }
+    }
+  }
+}
+.features{
+  background: $mid-gray;
+  padding: 60px 0;
+  h3{
+    color: $green;
+    .feature-icon{
+      margin-right: 15px;
     }
   }
 }
