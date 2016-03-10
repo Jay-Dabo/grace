@@ -18,11 +18,22 @@
 //General Styles//
 body{
   padding-top: 92px;
+  background: $lite-gray;
 }
 h1,h2,h3,h4,h5,h6{
+  color: $blue;
   font-family: $heading-font;
+  font-weight: 700;
+}
+a{
+  color: $blue;
 }
 //Navigation Styles//
+.navbar-default{
+  background: $mid-gray;
+  border-bottom: none;
+  box-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
 #navbar{
   margin-top: 25px;
   ul{
@@ -31,6 +42,11 @@ h1,h2,h3,h4,h5,h6{
         font-family: $heading-font;
         font-weight: 500;
         font-size: 16px;
+        border-bottom: 3px solid transparent;
+        &:hover{
+          color: $green;
+          border-color: $green;
+        }
       }
     }
   }
@@ -44,8 +60,9 @@ h1,h2,h3,h4,h5,h6{
   z-index: 777;
 }
 .form-inputs{
-  input, textarea{
+  input, textarea, select{
     margin: 5px 0;
+    border-radius: 0;
   }
   .radio_buttons{
     label.radio_buttons{
@@ -58,6 +75,18 @@ h1,h2,h3,h4,h5,h6{
   }
 }
 .btn{
+  &.grn-btn{
+    color: $lite-gray;
+    font-family: $heading-font;
+    font-weight: 700;
+    font-size: 20px;
+    background: $green;
+    border-radius: 0;
+  }
+  &.btn-lg{
+    font-size: 25px;
+    padding: 8px 40px;
+  }
   &.block{
     display: block;
     width: 100%;
@@ -74,11 +103,13 @@ h1,h2,h3,h4,h5,h6{
     .banner-text{
       position: relative;
       z-index: 20;
-      padding: 10% 0 20% 0;
+      padding: 60px 0 60px 0;
       h1{
         font-weight: 900;
         font-style: italic;
-        font-size: 3vw;
+        font-size: 3.5vw;
+        text-shadow: 1px 1px 1px $lite-gray;
+        margin-bottom: 20px;
         span{
           font-weight: 500;
         }
