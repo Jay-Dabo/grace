@@ -11,5 +11,6 @@
 #
 
 class Member < ActiveRecord::Base
+  belongs_to :church
   validates :name, :gender, presence: true
 end

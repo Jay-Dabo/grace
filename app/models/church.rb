@@ -13,6 +13,7 @@
 
 class Church < ActiveRecord::Base
   belongs_to :user
+  has_many :members
 
   validates :name, :denomination, presence: true
 end
