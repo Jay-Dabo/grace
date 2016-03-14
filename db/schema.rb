@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314215631) do
+ActiveRecord::Schema.define(version: 20160314232321) do
 
   create_table "churches", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -23,8 +23,11 @@ ActiveRecord::Schema.define(version: 20160314215631) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "name",       limit: 255
+    t.string   "gender",     limit: 255
+    t.integer  "church_id",  limit: 4
   end
 
   create_table "roles", force: :cascade do |t|

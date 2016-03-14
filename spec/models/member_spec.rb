@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  name       :string(255)
+#  gender     :string(255)
+#  church_id  :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
