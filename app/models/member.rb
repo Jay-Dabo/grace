@@ -13,4 +13,6 @@
 class Member < ActiveRecord::Base
   belongs_to :church
   validates :name, :gender, presence: true
+
+  ValidGenders = %w[male female]
 end

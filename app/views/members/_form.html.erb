@@ -2,9 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :name, label: false, placeholder: "Full Name", input_html: { class: "form-control" } %>
+    <%= f.input :gender, collection: Member::ValidGenders.map{|gender| [gender.titleize, gender]}, input_html: { class: "form-control" }, default: "male" %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn grn-btn block" %>
   </div>
 <% end %>
