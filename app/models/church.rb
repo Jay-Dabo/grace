@@ -14,6 +14,7 @@
 class Church < ActiveRecord::Base
   belongs_to :user
   has_many :members
+  mount_uploader :church_image, ChurchUploader
 
   validates :name, :denomination, presence: true
 end

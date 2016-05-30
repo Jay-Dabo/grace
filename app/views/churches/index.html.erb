@@ -15,7 +15,7 @@
       <tbody>
         <% @churches.each do |church| %>
           <tr>
-            <td><%= church.church_image %></td>
+            <td><%= image_tag(church.church_image_url(:thumb)) %></td>
             <td><%= church.name %></td>
             <td><%= church.denomination %></td>
             <td><%= link_to 'Show', church %></td>
