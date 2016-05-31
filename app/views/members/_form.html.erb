@@ -2,8 +2,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, label: false, placeholder: "Full Name", input_html: { class: "form-control" } %>
-    <%= f.input :gender, collection: Member::ValidGenders.map{|gender| [gender.titleize, gender]}, input_html: { class: "form-control" }, default: "male" %>
+    <%= f.input :member_image, as: :file, label: "Upload Member Photo", input_html: { class: "form-control" } %>
+    <%= f.input :first_name, label: false, placeholder: "First Name", required: true, input_html: { class: "form-control" } %>
+    <%= f.input :last_name, label: false, placeholder: "Last Name", required: true, input_html: { class: "form-control" } %>
+    <%= f.input :gender, collection: Member::ValidGenders.map{|gender| [gender.titleize, gender]}, label: false, required: true, input_html: { class: "form-control" }, default: "male" %>
+    <%= f.input :birthday, start_year: Date.today.year - 90, label: "Member's Birthday", input_html: { class: "form-control" } %>
+    <%= f.input :email, label: false, placeholder: "Email Address", input_html: { class: "form-control" } %>
+    <%= f.input :phone, label: false, placeholder: "Phone Number (555) 555-5555", input_html: { class: "form-control" } %>
+    <%= f.input :address, label: false, placeholder: "Street Address", input_html: { class: "form-control" } %>
+    <%= f.input :city, label: false, placeholder: "City", input_html: { class: "form-control" } %>
+    <%= f.input :state, collection: us_states, label: false, input_html: { class: "form-control" }, default: "Alabama" %>
+    <%= f.input :postal_code, label: false, placeholder: "Postal Code", input_html: { class: "form-control" } %>
+    <%= f.input :interest, label: false, placeholder: "Interest/Description", input_html: { class: "form-control" } %>
   </div>
 
   <div class="form-actions">

@@ -1,4 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<div class="container main-content">
+  <div class="col-md-3">
+    <%= @member.member_image %>
+  </div>
+  <div class="col-md-9">
+    <h1><%= @member.full_name %><small>, <%= @member.gender.titleize %></small></h1>
+    <p><strong>Address:</strong><br/><%= @member.full_address %></p>
+    <p><strong>Phone:</strong><br/><%= @member.phone %></p>
+    <p><strong>Email Address:</strong><br/><%= @member.email %></p>
+    <p><strong>Birthday:</strong><br/><%= @member.birthday %></p>
+    <p><strong>Interest/Description:</strong><br/><%= @member.interest %></p>
+  </div>
+  <%= link_to 'Edit', edit_member_path(@member) %> |
+  <%= link_to 'Back', members_path %>
+</div>
