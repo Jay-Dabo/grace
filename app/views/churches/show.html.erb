@@ -9,7 +9,7 @@
 
     <p>
       <strong>Church image:</strong>
-      <%= image_tag(@church.church_image_url(:large)) %>
+      <%= image_tag(@church.church_image_url(:large), class: "img-responsive") %>
     </p>
 
     <%= link_to 'Edit', edit_church_path(@church) %> |
