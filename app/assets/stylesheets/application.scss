@@ -32,6 +32,13 @@ h1,h2,h3,h4,h5,h6{
   color: $blue;
   font-family: $heading-font;
   font-weight: 700;
+  .grn-btn{
+    display: inline-block;
+    margin: 0 0 0 20px;
+  }
+}
+hr{
+  border-top: 2px solid $dark-gray;
 }
 a{
   color: $blue;
@@ -90,6 +97,10 @@ a{
     font-size: 20px;
     background: $green;
     border-radius: 0;
+    &:hover{
+      color: $lite-gray;
+      background: $blue;
+    }
   }
   &.btn-lg{
     font-size: 25px;
@@ -98,6 +109,7 @@ a{
   &.block{
     display: block;
     width: 100%;
+    margin: 7px 0;
     text-align: center;
   }
 }
@@ -129,5 +141,16 @@ a{
     .feature-icon{
       margin-right: 15px;
     }
+  }
+}
+//Form Styles//
+.form-actions{
+  margin-top: 20px;
+}
+.input.date{
+  select{
+    width: 30%;
+    float: left;
+    margin: 0 1.666%;
   }
 }

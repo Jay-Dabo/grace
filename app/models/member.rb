@@ -24,9 +24,9 @@ class Member < ActiveRecord::Base
   belongs_to :church
   mount_uploader :member_image, MemberUploader
 
-  validates :first_name, :last_name, :gender, presence: true
+  validates :first_name, :last_name, presence: true
 
-  ValidGenders = %w[male female]
+  ValidGenders = %w[N/A female male]
 
   def full_name
     "#{self.first_name} #{self.last_name}"

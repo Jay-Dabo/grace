@@ -1,15 +1,16 @@
-<div class="container main-content">
+<div class="col-md-12">
+  <h1><%= @member.full_name %><small>, <%= @member.gender.titleize %></small></h1>
+  <hr/>
   <div class="col-md-3">
     <%= image_tag(@member.member_image_url(:large), class: "img-responsive") %>
+    <%= link_to 'Edit', edit_member_path(@member), class: "btn grn-btn block" %>
+    <%= link_to 'Cancel', members_path, class: "btn grn-btn block" %>
   </div>
   <div class="col-md-9">
-    <h1><%= @member.full_name %><small>, <%= @member.gender.titleize %></small></h1>
     <p><strong>Address:</strong><br/><%= @member.full_address %></p>
     <p><strong>Phone:</strong><br/><%= @member.phone %></p>
     <p><strong>Email Address:</strong><br/><%= @member.email %></p>
     <p><strong>Birthday:</strong><br/><%= @member.birthday %></p>
     <p><strong>Interest/Description:</strong><br/><%= @member.interest %></p>
   </div>
-  <%= link_to 'Edit', edit_member_path(@member) %> |
-  <%= link_to 'Back', members_path %>
 </div>

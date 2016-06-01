@@ -2,21 +2,58 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :member_image, as: :file, label: "Upload Member Photo", input_html: { class: "form-control" } %>
-    <%= f.input :first_name, label: false, placeholder: "First Name", required: true, input_html: { class: "form-control" } %>
-    <%= f.input :last_name, label: false, placeholder: "Last Name", required: true, input_html: { class: "form-control" } %>
-    <%= f.input :gender, collection: Member::ValidGenders.map{|gender| [gender.titleize, gender]}, label: false, required: true, input_html: { class: "form-control" }, default: "male" %>
-    <%= f.input :birthday, start_year: Date.today.year - 90, label: "Member's Birthday", input_html: { class: "form-control" } %>
-    <%= f.input :email, label: false, placeholder: "Email Address", input_html: { class: "form-control" } %>
-    <%= f.input :phone, label: false, placeholder: "Phone Number (555) 555-5555", input_html: { class: "form-control" } %>
-    <%= f.input :address, label: false, placeholder: "Street Address", input_html: { class: "form-control" } %>
-    <%= f.input :city, label: false, placeholder: "City", input_html: { class: "form-control" } %>
-    <%= f.input :state, collection: us_states, label: false, input_html: { class: "form-control" }, default: "Alabama" %>
-    <%= f.input :postal_code, label: false, placeholder: "Postal Code", input_html: { class: "form-control" } %>
-    <%= f.input :interest, label: false, placeholder: "Interest/Description", input_html: { class: "form-control" } %>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="col-md-12">
+          <label>Name</label>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :first_name, label: false, placeholder: "First Name", required: true, input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :last_name, label: false, placeholder: "Last Name", required: true, input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-12">
+          <label>Address</label>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :address, label: false, placeholder: "Street Address", input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :city, label: false, placeholder: "City", input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :state, collection: us_states, label: false, input_html: { class: "form-control" }, default: "Alabama" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :postal_code, label: false, placeholder: "Postal Code", input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-12">
+          <label>Contact</label>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :email, label: false, placeholder: "Email Address", input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :phone, label: false, placeholder: "Phone Number (555) 555-5555", input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-12">
+          <label>Member Interest/Description</label>
+          <%= f.input :interest, label: false, placeholder: "Interest/Description", input_html: { class: "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label>Photo</label>
+        <%= f.input :member_image, as: :file, label: false, input_html: { class: "form-control" } %>
+        <label>Birthday</label>
+        <%= f.input :birthday, start_year: Date.today.year - 90, label: false, input_html: { class: "form-control" } %>
+        <label>Gender</label>
+        <%= f.input :gender, collection: Member::ValidGenders.map{|gender| [gender.titleize, gender]}, label: false, default: "N/A", input_html: { class: "form-control" } %>
+      </div>
+    </div>
   </div>
-
   <div class="form-actions">
     <%= f.button :submit, class: "btn grn-btn block" %>
   </div>
+
 <% end %>
