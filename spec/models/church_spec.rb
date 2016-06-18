@@ -35,11 +35,11 @@ RSpec.describe Church, type: :model do
     end
 
     it "should be valid" do
-      expect(church.valid?).to be true
+      expect(church.valid?).to be_truthy
     end
 
     it "should save" do
-      expect(church.save).to be true
+      expect(church.save).to be_truthy
     end
   end
 end
