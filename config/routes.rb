@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   resources :members
   resources :churches
   devise_for :users, controllers: { registrations: "registrations" }
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'contact' => 'pages#contact'
   get 'pricing' => 'pages#pricing'
+  get 'dashboard' => 'dashboard#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

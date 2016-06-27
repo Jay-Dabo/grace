@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def index
     @body_class = "home"
   end
@@ -14,4 +15,5 @@ class PagesController < ApplicationController
   def pricing
     @body_class = "pricing"
   end
+
 end
