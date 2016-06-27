@@ -25,7 +25,7 @@ require 'rails_helper'
 RSpec.describe Member, type: :model do
   let(:member) { Member.new }
 
-  context "New member without specific fields" do
+  context "New member without required fields" do
     it "should not be valid without a first name" do
       expect(member.valid?).to be_falsey
     end
@@ -43,7 +43,7 @@ RSpec.describe Member, type: :model do
     end
   end
 
-  context "New member with a first and last name" do
+  context "New member with required fields" do
     before do
       member.first_name = "Michael"
       member.last_name = "Langston"

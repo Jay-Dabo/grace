@@ -66,6 +66,38 @@ a{
     }
   }
 }
+//Side Navigation Styles//
+.side-nav-container{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: $mid-gray;
+}
+.side-nav{
+  margin: 0;
+  padding: 0;
+  li{
+    list-style: none;
+    border-bottom: 1px solid $lite-gray;
+    &:last-child{
+      border: none;
+    }
+    a{
+      display: block;
+      width: 100%;
+      color: $blue;
+      font-family: $heading-font;
+      font-weight: 700;
+      font-size: 18px;
+      background: $mid-gray;
+      padding: 10px 10px 10px 20px;
+      &:hover{
+        color: $lite-gray;
+        text-decoration: none;
+        background: $blue;
+      }
+    }
+  }
+}
 //Misu Styles//
 .flash-messages{
   position: absolute;
@@ -123,7 +155,7 @@ a{
       h1{
         font-weight: 900;
         font-style: italic;
-        font-size: 3.5vw;
+        font-size: 3.2vw;
         text-shadow: 1px 1px 1px $lite-gray;
         margin-bottom: 20px;
         span{
