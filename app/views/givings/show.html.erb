@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<p><%= @giving.member_id %></p>
+<p><%= @giving.amount %></p>
+<p><%= @giving.date_given %></p>
+<p><%= @giving.giving_type %></p>
 <%= link_to 'Edit', edit_giving_path(@giving) %> |
 <%= link_to 'Back', givings_path %>

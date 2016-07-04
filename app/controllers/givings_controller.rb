@@ -1,5 +1,7 @@
 class GivingsController < ApplicationController
+  before_action :set_members
   before_action :set_giving, only: [:show, :edit, :update, :destroy]
+  layout "admin"
 
   # GET /givings
   # GET /givings.json
@@ -65,6 +67,10 @@ class GivingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_giving
       @giving = Giving.find(params[:id])
+    end
+
+    def set_members
+      @members = current_user.church.members
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

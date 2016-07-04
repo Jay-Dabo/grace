@@ -1,10 +1,11 @@
 <%= simple_form_for(@giving) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-  </div>
-
   <div class="form-actions">
+    <%= f.input :member_id, collection: @members %>
+    <%= f.input :amount %>
+    <%= f.input :date_given %>
+    <%= f.input :giving_type %>
     <%= f.button :submit %>
   </div>
 <% end %>
