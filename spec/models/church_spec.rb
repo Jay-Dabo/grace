@@ -17,7 +17,7 @@ RSpec.describe Church, type: :model do
   # Create a church to use with test
   let (:church) { Church.new }
 
-  context "New Church without name or denomination" do
+  context "New Church without required fields" do
     it "should not be valid" do
       expect(church.valid?).to be_falsey
     end
@@ -27,11 +27,16 @@ RSpec.describe Church, type: :model do
     end
   end
 
-  context "New Church with name and denomination" do
+  context "New Church with required fields" do
     # Add name and denomination to test
     before do
+      church.user_id = 1
       church.name = "SCCC"
       church.denomination = "Non-Denominational"
+    end
+
+    it "should have a user_id" do
+      expect(church.user_id).to equal(1)
     end
 
     it "should be valid" do
