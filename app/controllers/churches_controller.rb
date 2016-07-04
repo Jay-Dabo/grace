@@ -28,7 +28,7 @@ class ChurchesController < ApplicationController
   # POST /churches.json
   def create
     @church = Church.new(church_params)
-    @church.user_id = current_user.id
+    @church.user_id = current_user.id if current_user
     respond_to do |format|
       if @church.save
         format.html { redirect_to churches_url, notice: 'Church was successfully created.' }
