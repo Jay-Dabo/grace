@@ -28,10 +28,10 @@ class ChurchesController < ApplicationController
   # POST /churches.json
   def create
     @church = Church.new(church_params)
-
+    @church.user_id = current_user.id
     respond_to do |format|
       if @church.save
-        format.html { redirect_to @church, notice: 'Church was successfully created.' }
+        format.html { redirect_to churches_url, notice: 'Church was successfully created.' }
         format.json { render :show, status: :created, location: @church }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ChurchesController < ApplicationController
   def update
     respond_to do |format|
       if @church.update(church_params)
-        format.html { redirect_to @church, notice: 'Church was successfully updated.' }
+        format.html { redirect_to churches_url, notice: 'Church was successfully updated.' }
         format.json { render :show, status: :ok, location: @church }
       else
         format.html { render :edit }
