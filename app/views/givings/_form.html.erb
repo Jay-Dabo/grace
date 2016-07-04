@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-actions">
-    <%= f.input :member_id, collection: @members %>
+    <%= f.input :member_id, collection: @members.map{|member| [member.full_name, member.id]} %>
     <%= f.input :amount %>
     <%= f.input :date_given %>
     <%= f.input :giving_type %>
