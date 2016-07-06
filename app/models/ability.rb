@@ -16,7 +16,8 @@ class Ability
     else
       can :read, :all
       can :manage, Church, :user_id => user.id
-      can :manage, Member, :church_id => user.id
+      can :manage, Member, church: { user_id: user.id }
+      can :manage, Giving, member: { church: { user_id: user.id } }
       can :dashboard
     end
     # The first argument to `can` is the action you are giving the user

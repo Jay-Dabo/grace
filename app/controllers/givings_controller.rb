@@ -1,4 +1,7 @@
 class GivingsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+  before_action :set_church
   before_action :set_members
   before_action :set_giving, only: [:show, :edit, :update, :destroy]
   layout "admin"
@@ -6,7 +9,7 @@ class GivingsController < ApplicationController
   # GET /givings
   # GET /givings.json
   def index
-    @givings = Giving.all
+    @givings = @church.givings
   end
 
   # GET /givings/1
@@ -67,6 +70,10 @@ class GivingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_giving
       @giving = Giving.find(params[:id])
+    end
+
+    def set_church
+      @church = current_user.church
     end
 
     def set_members
