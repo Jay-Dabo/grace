@@ -30,7 +30,7 @@ class GivingsController < ApplicationController
   # POST /givings.json
   def create
     @giving = Giving.new(giving_params)
-
+    @giving.church_id = @church.id
     respond_to do |format|
       if @giving.save
         format.html { redirect_to @giving, notice: 'Giving was successfully created.' }
@@ -82,6 +82,6 @@ class GivingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def giving_params
-      params.require(:giving).permit(:member_id, :amount, :date_given, :giving_type)
+      params.require(:giving).permit(:church_id, :member_id, :amount, :date_given, :giving_type)
     end
 end
