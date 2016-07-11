@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :givings
-  get 'dashboard/index'
-
-  resources :members
-  resources :churches
+  
+  resources :churches do
+    resources :members
+    resources :givings
+  end
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

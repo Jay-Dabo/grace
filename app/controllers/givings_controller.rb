@@ -1,6 +1,6 @@
 class GivingsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  #load_and_authorize_resource
   before_action :set_church
   before_action :set_members
   before_action :set_giving, only: [:show, :edit, :update, :destroy]
@@ -33,7 +33,7 @@ class GivingsController < ApplicationController
     @giving.church_id = @church.id
     respond_to do |format|
       if @giving.save
-        format.html { redirect_to @giving, notice: 'Giving was successfully created.' }
+        format.html { redirect_to [@church, @giving], notice: 'Giving was successfully created.' }
         format.json { render :show, status: :created, location: @giving }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class GivingsController < ApplicationController
   def update
     respond_to do |format|
       if @giving.update(giving_params)
-        format.html { redirect_to @giving, notice: 'Giving was successfully updated.' }
+        format.html { redirect_to [@church, @giving], notice: 'Giving was successfully updated.' }
         format.json { render :show, status: :ok, location: @giving }
       else
         format.html { render :edit }

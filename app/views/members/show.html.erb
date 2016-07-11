@@ -3,8 +3,8 @@
   <hr/>
   <div class="col-md-3">
     <%= image_tag(@member.member_image_url(:large), class: "img-responsive") %>
-    <%= link_to 'Edit', edit_member_path(@member), class: "btn grn-btn block" %>
-    <%= link_to 'Cancel', members_path, class: "btn grn-btn block" %>
+    <%= link_to 'Edit', edit_church_member_path(@church, @member), class: "btn grn-btn block" %>
+    <%= link_to 'Cancel', church_members_path(@church), class: "btn grn-btn block" %>
   </div>
   <div class="col-md-9">
     <p><strong>Address:</strong><br/><%= @member.full_address %></p>

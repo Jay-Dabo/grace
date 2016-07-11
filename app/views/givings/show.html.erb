@@ -2,5 +2,5 @@
 <p><%= @giving.amount %></p>
 <p><%= @giving.date_given %></p>
 <p><%= @giving.giving_type %></p>
-<%= link_to 'Edit', edit_giving_path(@giving) %> |
-<%= link_to 'Back', givings_path %>
+<%= link_to 'Edit', edit_church_giving_path(@church, @giving) %> |
+<%= link_to 'Back', church_givings_path(@church) %>

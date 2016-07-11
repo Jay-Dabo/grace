@@ -1,4 +1,4 @@
-<h1>Members <%= link_to 'New Member', new_member_path, class: "btn grn-btn" %></h1>
+<h1>Members <%= link_to 'New Member', new_church_member_path(@church), class: "btn grn-btn" %></h1>
 <hr/>
 <table class="table table-striped">
   <thead>
@@ -15,14 +15,14 @@
   <tbody>
     <% @members.each do |member| %>
       <tr>
-        <td><%= link_to image_tag(member.member_image_url(:thumb)), member_path(member) %></td>
-        <td><%= link_to member.full_name, member_path(member) %></td>
+        <td><%= link_to image_tag(member.member_image_url(:thumb)), church_member_path(@church, member) %></td>
+        <td><%= link_to member.full_name, church_member_path(@church, member) %></td>
         <td><%= member.email %></td>
         <td><%= member.phone %></td>
         <td><%= member.birthday %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', church_member_path(@church, member) %></td>
+        <td><%= link_to 'Edit', edit_church_member_path(@church, member) %></td>
+        <td><%= link_to 'Destroy', [@church, member], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

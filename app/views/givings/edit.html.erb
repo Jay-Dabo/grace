@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @giving %> |
-<%= link_to 'Back', givings_path %>
+<%= link_to 'Show', church_giving_path(@church, @giving) %> |
+<%= link_to 'Back', church_givings_path(@church) %>
