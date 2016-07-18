@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706232556) do
+ActiveRecord::Schema.define(version: 20160718165642) do
 
   create_table "churches", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20160706232556) do
     t.datetime "updated_at",               null: false
     t.integer  "user_id",      limit: 4
   end
+
+  create_table "giving_types", force: :cascade do |t|
+    t.string   "giving_type", limit: 255
+    t.integer  "church_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "giving_types", ["church_id"], name: "index_giving_types_on_church_id", using: :btree
 
   create_table "givings", force: :cascade do |t|
     t.datetime "created_at",                             null: false
@@ -90,4 +99,5 @@ ActiveRecord::Schema.define(version: 20160706232556) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
+  add_foreign_key "giving_types", "churches"
 end

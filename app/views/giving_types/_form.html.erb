@@ -1,0 +1,11 @@
+<%= simple_form_for([@church, @giving_type]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :giving_type, label: false, required: true, placeholder: "New Giving Type", input_html: { class: "form-control" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn grn-btn block" %>
+  </div>
+<% end %>

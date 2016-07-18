@@ -61,7 +61,7 @@ class GivingsController < ApplicationController
   def destroy
     @giving.destroy
     respond_to do |format|
-      format.html { redirect_to givings_url, notice: 'Giving was successfully destroyed.' }
+      format.html { redirect_to church_givings_url, notice: 'Giving was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
