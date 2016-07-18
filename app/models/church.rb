@@ -13,8 +13,8 @@
 
 class Church < ActiveRecord::Base
   belongs_to :user
-  has_many :members
-  has_many :givings
+  has_many :members, dependent: :destroy
+  has_many :givings, dependent: :destroy
   mount_uploader :church_image, ChurchUploader
 
   validates :name, :denomination, presence: true

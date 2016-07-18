@@ -22,7 +22,7 @@
 
 class Member < ActiveRecord::Base
   belongs_to :church
-  has_many :givings
+  has_many :givings, dependent: :destroy
   mount_uploader :member_image, MemberUploader
 
   validates :first_name, :last_name, :email, presence: true
