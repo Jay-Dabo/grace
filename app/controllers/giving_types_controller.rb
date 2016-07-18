@@ -6,7 +6,7 @@ class GivingTypesController < ApplicationController
   # GET /giving_types
   # GET /giving_types.json
   def index
-    @giving_types = GivingType.all
+    @giving_types = @church.giving_types
   end
 
   # GET /giving_types/1
