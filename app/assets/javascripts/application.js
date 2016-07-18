@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
@@ -23,6 +24,16 @@ function flash_messages(){
   }, 2500);
 }
 
+function init_datepicker(){
+  jQuery('input.datepicker').each(function(input){
+    $(this).datepicker({
+      dateFormat: "yy-mm-dd",
+      altField: $(this).next()
+    })
+  });
+}
+
 jQuery(document).ready(function(){
   flash_messages();
+  init_datepicker();
 });

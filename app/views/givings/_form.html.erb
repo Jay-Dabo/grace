@@ -3,9 +3,9 @@
 
   <div class="form-inputs">
     <%= f.input :member_id, required: true, input_html: { class: "form-control" }, collection: @members.map{|member| [member.full_name, member.id]} %>
-    <%= f.input :amount, label: false, placeholder: "Amount", required: true, input_html: { class: "form-control" } %>
-    <%= f.input :date_given, label: false, required: true, input_html: { class: "form-control" } %>
     <%= f.input :giving_type, required: true, input_html: { class: "form-control" } %>
+    <%= f.input :date_given, label: "Date", required: true, as: :datepicker, input_html: { class: "form-control" } %>
+    <%= f.input :amount, label: false, placeholder: "Amount", required: true, input_html: { class: "form-control" } %>
   </div>
 
   <div class="form-actions">
