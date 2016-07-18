@@ -3,6 +3,7 @@ class GivingsController < ApplicationController
   #load_and_authorize_resource
   before_action :set_church
   before_action :set_members
+  before_action :set_giving_types
   before_action :set_giving, only: [:show, :edit, :update, :destroy]
   layout "admin"
 
@@ -78,6 +79,10 @@ class GivingsController < ApplicationController
 
     def set_members
       @members = current_user.church.members
+    end
+
+    def set_giving_types
+      @giving_types = current_user.church.giving_types
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

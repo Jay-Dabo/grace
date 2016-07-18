@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :member_id, required: true, input_html: { class: "form-control" }, collection: @members.map{|member| [member.full_name, member.id]} %>
-    <%= f.input :giving_type, required: true, input_html: { class: "form-control" } %>
+    <%= f.input :giving_type, required: true, input_html: { class: "form-control" }, collection: @giving_types.map{|giving_type| [giving_type.giving_type, giving_type.id]} %>
     <%= f.input :date_given, label: "Date", required: true, as: :datepicker, input_html: { class: "form-control" } %>
     <%= f.input :amount, label: false, placeholder: "Amount", required: true, input_html: { class: "form-control" } %>
   </div>
