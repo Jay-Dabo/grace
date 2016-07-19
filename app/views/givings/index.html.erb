@@ -5,8 +5,9 @@
     <tr>
       <th>Member</th>
       <th>Amount</th>
+      <th>Giving Type</th>
       <th>Date Given</th>
-      <th colspan="3">Actions</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -14,11 +15,14 @@
     <% @givings.each do |giving| %>
       <tr>
         <td><%= giving.member.full_name %></td>
-        <td><%= giving.amount %></td>
-        <td><%= giving.date_given %></td>
-        <td><%= link_to 'Show', church_giving_path(@church, giving) %></td>
-        <td><%= link_to 'Edit', edit_church_giving_path(@church, giving) %></td>
-        <td><%= link_to 'Destroy', [@church, giving], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= number_to_currency(giving.amount) %></td>
+        <td><%= giving.giving_type %></td>
+        <td><%= short_date(giving.date_given) %></td>
+        <td class="actions">
+          <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_path(@church, giving), title: 'View', class: 'action view' %>
+          <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_path(@church, giving), title: 'Edit', class: 'action edit' %>
+          <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving], method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete', class: 'action delete' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

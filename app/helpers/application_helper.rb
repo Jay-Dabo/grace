@@ -70,4 +70,8 @@ module ApplicationHelper
    }
   end
 
+  def short_date(date)
+    date.strftime("%m/%d/%Y")
+  end
+
 end

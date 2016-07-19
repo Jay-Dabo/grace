@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Type</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -12,9 +12,11 @@
     <% @giving_types.each do |giving_type| %>
       <tr>
         <td><%= giving_type.giving_type %></td>
-        <td><%= link_to 'Show', church_giving_type_path(@church, giving_type) %></td>
-        <td><%= link_to 'Edit', edit_church_giving_type_path(@church, giving_type) %></td>
-        <td><%= link_to 'Destroy', [@church, giving_type], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="actions">
+          <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_type_path(@church, giving_type), title: "View", class: "action view" %>
+          <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_type_path(@church, giving_type), title: "Edit", class: "action edit" %>
+          <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving_type], method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", class: "action delete" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
