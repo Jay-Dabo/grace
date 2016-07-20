@@ -16,7 +16,7 @@
       <tr>
         <td><%= giving.member.full_name %></td>
         <td><%= number_to_currency(giving.amount) %></td>
-        <td><%= giving.giving_type %></td>
+        <td><%= giving.giving_type.name %></td>
         <td><%= short_date(giving.date_given) %></td>
         <td class="actions">
           <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_path(@church, giving), title: 'View', class: 'action view' %>

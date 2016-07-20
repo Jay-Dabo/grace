@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718165642) do
+ActiveRecord::Schema.define(version: 20160720223205) do
 
   create_table "churches", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -23,22 +23,22 @@ ActiveRecord::Schema.define(version: 20160718165642) do
   end
 
   create_table "giving_types", force: :cascade do |t|
-    t.string   "giving_type", limit: 255
-    t.integer  "church_id",   limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",       limit: 255
+    t.integer  "church_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "giving_types", ["church_id"], name: "index_giving_types_on_church_id", using: :btree
 
   create_table "givings", force: :cascade do |t|
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.integer  "member_id",   limit: 4
-    t.decimal  "amount",                  precision: 10
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "member_id",      limit: 4
+    t.decimal  "amount",                   precision: 10
     t.date     "date_given"
-    t.string   "giving_type", limit: 255
-    t.integer  "church_id",   limit: 4
+    t.integer  "giving_type_id", limit: 4
+    t.integer  "church_id",      limit: 4
   end
 
   create_table "members", force: :cascade do |t|

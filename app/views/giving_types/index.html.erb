@@ -11,7 +11,7 @@
   <tbody>
     <% @giving_types.each do |giving_type| %>
       <tr>
-        <td><%= giving_type.giving_type %></td>
+        <td><%= giving_type.name %></td>
         <td class="actions">
           <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_type_path(@church, giving_type), title: "View", class: "action view" %>
           <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_type_path(@church, giving_type), title: "Edit", class: "action edit" %>

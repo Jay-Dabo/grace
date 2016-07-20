@@ -75,6 +75,6 @@ class GivingTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def giving_type_params
-      params.require(:giving_type).permit(:giving_type, :church_id)
+      params.require(:giving_type).permit(:name, :church_id)
     end
 end

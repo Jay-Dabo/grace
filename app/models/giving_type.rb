@@ -11,4 +11,5 @@
 
 class GivingType < ActiveRecord::Base
   belongs_to :church
+  has_many :givings, dependent: :destroy
 end

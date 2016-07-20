@@ -87,6 +87,6 @@ class GivingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def giving_params
-      params.require(:giving).permit(:church_id, :member_id, :amount, :date_given, :giving_type)
+      params.require(:giving).permit(:church_id, :member_id, :amount, :date_given, :giving_type_id)
     end
 end
