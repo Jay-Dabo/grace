@@ -34,7 +34,7 @@ RSpec.describe Member, type: :model do
   it { should validate_presence_of(:phone) }
   it { should validate_uniqueness_of(:email) }
 
-  context "it should concatenate first name and last name to make full name" do
+  describe "full_name" do
     it "should add a space between first name and last name" do
       member.first_name = "Michael"
       member.last_name = "Langston"
@@ -42,8 +42,8 @@ RSpec.describe Member, type: :model do
     end
   end
 
-  context "it should concatenate address, city, state, and zip code to make full address" do
-    it "shuold add a space between all fields and a comma between city and state" do
+  describe "full_address" do
+    it "should add a space between all fields and a comma between city and state" do
       member.address = "468 Hunter Way"
       member.city = "Clayton"
       member.state = "NC"
