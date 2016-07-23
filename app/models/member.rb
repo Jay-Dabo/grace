@@ -25,7 +25,9 @@ class Member < ActiveRecord::Base
   has_many :givings, dependent: :destroy
   mount_uploader :member_image, MemberUploader
 
-  validates :first_name, :last_name, :email, presence: true
+  validates :church_id, :first_name, :last_name, :email, :phone,
+    presence: true
+  validates :email, uniqueness: true
 
   ValidGenders = %w[N/A female male]
 

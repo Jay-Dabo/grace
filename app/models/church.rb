@@ -18,5 +18,5 @@ class Church < ActiveRecord::Base
   has_many :giving_types, dependent: :destroy
   mount_uploader :church_image, ChurchUploader
 
-  validates :name, :denomination, presence: true
+  validates :name, :denomination, :user_id, presence: true
 end

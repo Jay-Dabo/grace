@@ -28,4 +28,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :church, dependent: :destroy
+
+  validates :email, :encrypted_password, presence: true
 end

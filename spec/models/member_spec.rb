@@ -23,39 +23,33 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
+
   let(:member) { Member.new }
 
-  context "New member without required fields" do
-    it "should not be valid without a first name" do
-      expect(member.valid?).to be_falsey
-    end
+  it { should belong_to(:church) }
+  it { should validate_presence_of(:church_id) }
+  it { should validate_presence_of(:first_name) }
+  it { should validate_presence_of(:last_name) }
+  it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:phone) }
+  it { should validate_uniqueness_of(:email) }
 
-    it "should not be valid without a last name" do
-      expect(member.valid?).to be_falsey
-    end
-
-    it "should not be valid without an email" do
-      expect(member.valid?).to be_falsey
-    end
-
-    it "should not save" do
-      expect(member.save).to be_falsey
-    end
-  end
-
-  context "New member with required fields" do
-    before do
+  context "it should concatenate first name and last name to make full name" do
+    it "should add a space between first name and last name" do
       member.first_name = "Michael"
       member.last_name = "Langston"
-      member.email = "mike@mikelangston.me"
-    end
-
-    it "should be valid" do
-      expect(member.valid?).to be_truthy
-    end
-
-    it "should save" do
-      expect(member.save).to be_truthy
+      expect(member.full_name).to eq("Michael Langston")
     end
   end
+
+  context "it should concatenate address, city, state, and zip code to make full address" do
+    it "shuold add a space between all fields and a comma between city and state" do
+      member.address = "468 Hunter Way"
+      member.city = "Clayton"
+      member.state = "NC"
+      member.postal_code = "27520"
+      expect(member.full_address).to eq("468 Hunter Way<br/>Clayton, NC 27520")
+    end
+  end
+
 end
