@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ChurchesController, type: :controller do
 
   describe "with authorized user" do
-    let(:user){ FactoryGirl.create(:user) }
+    let(:user){ FactoryGirl.create(:super_admin) }
     before do
       sign_in user
     end
@@ -22,7 +22,7 @@ RSpec.describe ChurchesController, type: :controller do
 
     describe "GET edit" do
       let(:church){ FactoryGirl.create(:church) }
-      xit "has a 200 response status" do
+      it "has a 200 response status" do
         get :edit, id: church
         expect(response.status).to eq(200)
       end
