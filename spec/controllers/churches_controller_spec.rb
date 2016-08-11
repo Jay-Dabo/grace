@@ -30,6 +30,19 @@ RSpec.describe ChurchesController, type: :controller do
       end
     end
 
+    #test the new action
+    describe "GET new" do
+      it "has a 200 response status" do
+        get :new
+        expect(response.status).to eq(200)
+      end
+
+      it "should be a new church" do
+        get :new
+        expect(assigns(:church)).to be_a_new(Church)
+      end
+    end
+
     #text the edit action
     describe "GET edit" do
       let(:church){ FactoryGirl.create(:church) }

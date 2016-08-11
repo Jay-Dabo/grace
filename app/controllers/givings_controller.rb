@@ -78,7 +78,7 @@ class GivingsController < ApplicationController
     end
 
     def set_members
-      @members = current_user.church.members
+      @members = current_user.church.members.order("first_name ASC")
     end
 
     def set_giving_types
