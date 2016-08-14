@@ -9,7 +9,7 @@ RSpec.describe ChurchesController, type: :controller do
     end
 
     #test the index action
-    describe "GET index" do
+    describe "GET #index" do
       it "has a 200 response status" do
         get :index
         expect(response.status).to eq(200)
@@ -22,7 +22,7 @@ RSpec.describe ChurchesController, type: :controller do
     end
 
     #test the show action
-    describe "GET show" do
+    describe "GET #show" do
       let(:church){ FactoryGirl.create(:church) }
       it "redirects to index action" do
         get :show, id: church
@@ -31,7 +31,7 @@ RSpec.describe ChurchesController, type: :controller do
     end
 
     #test the new action
-    describe "GET new" do
+    describe "GET #new" do
       it "has a 200 response status" do
         get :new
         expect(response.status).to eq(200)
@@ -43,8 +43,8 @@ RSpec.describe ChurchesController, type: :controller do
       end
     end
 
-    #text the edit action
-    describe "GET edit" do
+    #test the edit action
+    describe "GET #edit" do
       let(:church){ FactoryGirl.create(:church) }
       it "has a 200 response status" do
         get :edit, id: church
