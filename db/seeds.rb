@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+STDOUT.sync = true
+
+puts "Super Admins"
+User.find_or_create_by(first_name: "Mike").update_attributes(:last_name => "", :email => "", :password => "", :password_confirmation => "")
