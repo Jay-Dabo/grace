@@ -1,4 +1,4 @@
 <h1><%= @church.name %></h1>
 <p><%= @church.denomination %></p>
 <%= image_tag(@church.church_image_url(:medium)) %>
-<p><%= link_to 'Edit', edit_church_path(@church) %> | <%= link_to 'Destroy', @church, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<p><%= link_to 'Edit', edit_church_path(@church) %> | <%= link_to 'Destroy', @church, method: :delete, data: { confirm: 'Are you sure? Deleting your church will delete all data associated with the church (eg. Members, Givings, etc.).' } %></p>

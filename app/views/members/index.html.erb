@@ -24,7 +24,7 @@
           <td class="actions">
             <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_member_path(@church, member), title: 'View', class: 'action view' %>
             <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_member_path(@church, member), title: 'Edit', class: 'action edit' %>
-            <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, member], method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete', class: 'action delete' %>
+            <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, member], method: :delete, data: { confirm: 'Are you sure? Deleting a member will delete all data associated with a member (eg. Givings).' }, title: 'Delete', class: 'action delete' %>
           </td>
         </tr>
       <% end %>

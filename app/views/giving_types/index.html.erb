@@ -18,7 +18,7 @@
           <td class="actions">
             <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_type_path(@church, giving_type), title: "View", class: "action view" %>
             <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_type_path(@church, giving_type), title: "Edit", class: "action edit" %>
-            <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving_type], method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete", class: "action delete" %>
+            <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving_type], method: :delete, data: { confirm: 'Are you sure? Deleting a giving type will delete all data associated with the giving type (eg. Givings).' }, title: "Delete", class: "action delete" %>
           </td>
         </tr>
       <% end %>
