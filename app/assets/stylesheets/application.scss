@@ -92,6 +92,10 @@ a{
       font-size: 18px;
       background: $mid-gray;
       padding: 10px 10px 10px 20px;
+      i{
+        width: 24px;
+        text-align: center;
+      }
       &:hover{
         color: $lite-gray;
         text-decoration: none;

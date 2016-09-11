@@ -8,4 +8,6 @@
 STDOUT.sync = true
 
 puts "Super Admins"
-User.find_or_create_by(first_name: "Mike").update_attributes(:last_name => "", :email => "", :password => "", :password_confirmation => "")
+User.find_or_create_by(email: "mike@mikelangston.me").update_attributes(password: "Nicole03", password_confirmation: "Nicole03", :confirmed_at => Date.yesterday)
+u = User.find_by(email: "mike@mikelangston.me")
+u.add_role("super_admin")

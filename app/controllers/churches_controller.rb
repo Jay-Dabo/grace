@@ -13,7 +13,6 @@ class ChurchesController < ApplicationController
   # GET /churches/1
   # GET /churches/1.json
   def show
-    redirect_to churches_url
   end
 
   # GET /churches/new
