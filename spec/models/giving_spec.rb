@@ -6,7 +6,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  member_id      :integer
-#  amount         :decimal(10, )
+#  amount         :decimal(, )
 #  date_given     :date
 #  giving_type_id :integer
 #  church_id      :integer

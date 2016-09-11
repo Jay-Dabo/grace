@@ -3,9 +3,9 @@
 # Table name: churches
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
-#  denomination :string(255)
-#  church_image :string(255)
+#  name         :string
+#  denomination :string
+#  church_image :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :integer
