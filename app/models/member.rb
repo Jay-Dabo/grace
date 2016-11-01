@@ -38,4 +38,14 @@ class Member < ActiveRecord::Base
   def full_address
     "#{self.address}<br/>#{self.city}, #{self.state} #{self.postal_code}".html_safe
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |row|
+        csv << row.attributes.values_at(*column_names)
+      end
+    end
+  end
+  
 end

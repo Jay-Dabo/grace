@@ -1,4 +1,5 @@
 <h1>Giving Types <%= link_to 'New Giving type', new_church_giving_type_path(@church), class: "btn grn-btn" %></h1>
+<span>Download: <%= link_to "CSV", church_giving_types_path(@church, format: "csv") %></span>
 <hr/>
 <% if @giving_types.blank? %>
   <p>You don't have any giving types, let's go create a new <%= link_to "giving type", new_church_giving_type_path(@church) %>!</p>

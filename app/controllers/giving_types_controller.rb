@@ -7,6 +7,10 @@ class GivingTypesController < ApplicationController
   # GET /giving_types.json
   def index
     @giving_types = @church.giving_types
+    respond_to do |format|
+      format.html
+      format.csv { send_data @giving_types.to_csv }
+    end
   end
 
   # GET /giving_types/1

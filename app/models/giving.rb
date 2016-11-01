@@ -19,4 +19,13 @@ class Giving < ActiveRecord::Base
 
   validates :church_id, :member_id, :giving_type_id, :amount, :date_given,
     presence: true
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |row|
+        csv << row.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

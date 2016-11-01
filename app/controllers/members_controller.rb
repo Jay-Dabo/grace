@@ -9,6 +9,10 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @members = @church.members
+    respond_to do |format|
+      format.html
+      format.csv { send_data @members.to_csv}
+    end
   end
 
   # GET /members/1

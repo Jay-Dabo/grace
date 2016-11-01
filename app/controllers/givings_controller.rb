@@ -11,6 +11,10 @@ class GivingsController < ApplicationController
   # GET /givings.json
   def index
     @givings = @church.givings
+    respond_to do |format|
+      format.html
+      format.csv { send_data @givings.to_csv }
+    end
   end
 
   # GET /givings/1
