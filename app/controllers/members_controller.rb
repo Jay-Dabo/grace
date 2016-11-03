@@ -8,7 +8,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = @church.members
+    @members = @church.members.paginate(page: params[:page])
     respond_to do |format|
       format.html
       format.csv { send_data @members.to_csv}
