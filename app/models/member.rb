@@ -39,6 +39,14 @@ class Member < ActiveRecord::Base
     "#{self.address}<br/>#{self.city}, #{self.state} #{self.postal_code}".html_safe
   end
 
+  def self.search(search)
+    if search
+      where('LOWER(first_name) LIKE :search OR LOWER(last_name) LIKE :search OR email LIKE :search', search: "%#{search.downcase}")
+    else
+      all
+    end
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
@@ -47,5 +55,5 @@ class Member < ActiveRecord::Base
       end
     end
   end
-  
+
 end
