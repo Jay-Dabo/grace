@@ -1,38 +1,32 @@
 <h1>Givings <%= link_to 'New Giving', new_church_giving_path(@church), class: "btn grn-btn" %></h1>
 <span>Download: <%= link_to "CSV", church_givings_path(@church, format: "csv") %></span>
 <hr/>
-<% if @members.blank? %>
-  <p>You don't have any church members, let's go add some <%= link_to "members", new_church_member_path(@church) %>!</p>
-<% elsif @giving_types.blank? %>
-  <p>You don't have any giving types, let's go add some <%= link_to "giving types", new_church_giving_type_path(@church) %>!</p>
-<% else %>
-  <%= render partial: "shared/search_form", locals: { path: church_givings_path } %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= sortable "member_id" %></th>
-        <th>Amount</th>
-        <th>Giving Type</th>
-        <th>Date Given</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+<%= render partial: "shared/search_form", locals: { path: church_givings_path } %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= sortable "member_id" %></th>
+      <th>Amount</th>
+      <th>Giving Type</th>
+      <th>Date Given</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @givings.each do |giving| %>
-        <tr>
-          <td><%= giving.member.full_name %></td>
-          <td><%= number_to_currency(giving.amount) %></td>
-          <td><%= giving.giving_type.name %></td>
-          <td><%= short_date(giving.date_given) %></td>
-          <td class="actions">
-            <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_path(@church, giving), title: 'View', class: 'action view' %>
-            <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_path(@church, giving), title: 'Edit', class: 'action edit' %>
-            <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving], method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete', class: 'action delete' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+  <tbody>
+    <% @givings.each do |giving| %>
+    <tr>
+      <td><%= giving.member.full_name %></td>
+      <td><%= number_to_currency(giving.amount) %></td>
+      <td><%= giving.giving_type.name %></td>
+      <td><%= short_date(giving.date_given) %></td>
+      <td class="actions">
+        <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_path(@church, giving), title: 'View', class: 'action view' %>
+        <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_path(@church, giving), title: 'Edit', class: 'action edit' %>
+        <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving], method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete', class: 'action delete' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= will_paginate @givings %>

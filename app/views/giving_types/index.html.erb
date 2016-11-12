@@ -1,30 +1,26 @@
 <h1>Giving Types <%= link_to 'New Giving type', new_church_giving_type_path(@church), class: "btn grn-btn" %></h1>
 <span>Download: <%= link_to "CSV", church_giving_types_path(@church, format: "csv") %></span>
 <hr/>
-<% if @giving_types.blank? %>
-  <p>You don't have any giving types, let's go create a new <%= link_to "giving type", new_church_giving_type_path(@church) %>!</p>
-<% else %>
-  <%= render partial: "shared/search_form", locals: { path: church_giving_types_path } %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= sortable "name", "Type" %></th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+<%= render partial: "shared/search_form", locals: { path: church_giving_types_path } %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= sortable "name", "Type" %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @giving_types.each do |giving_type| %>
-        <tr>
-          <td><%= giving_type.name %></td>
-          <td class="actions">
-            <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_type_path(@church, giving_type), title: "View", class: "action view" %>
-            <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_type_path(@church, giving_type), title: "Edit", class: "action edit" %>
-            <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving_type], method: :delete, data: { confirm: 'Are you sure? Deleting a giving type will delete all data associated with the giving type (eg. Givings).' }, title: "Delete", class: "action delete" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+  <tbody>
+    <% @giving_types.each do |giving_type| %>
+    <tr>
+      <td><%= giving_type.name %></td>
+      <td class="actions">
+        <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_giving_type_path(@church, giving_type), title: "View", class: "action view" %>
+        <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_giving_type_path(@church, giving_type), title: "Edit", class: "action edit" %>
+        <%= link_to "<i class='fa fa-trash-o'></i>".html_safe, [@church, giving_type], method: :delete, data: { confirm: 'Are you sure? Deleting a giving type will delete all data associated with the giving type (eg. Givings).' }, title: "Delete", class: "action delete" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= will_paginate @giving_types %>
