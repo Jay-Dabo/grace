@@ -6,6 +6,7 @@
 <% elsif @giving_types.blank? %>
   <p>You don't have any giving types, let's go add some <%= link_to "giving types", new_church_giving_type_path(@church) %>!</p>
 <% else %>
+  <%= render partial: "shared/search_form", locals: { path: church_givings_path } %>
   <table class="table table-striped">
     <thead>
       <tr>

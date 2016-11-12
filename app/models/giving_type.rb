@@ -15,6 +15,14 @@ class GivingType < ActiveRecord::Base
 
   validates :church_id, :name, presence: true
 
+  def self.search(search)
+    if search
+      where('LOWER(name) LIKE :search', search: "%#{search.downcase}")
+    else
+      all
+    end
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
@@ -23,5 +31,5 @@ class GivingType < ActiveRecord::Base
       end
     end
   end
-  
+
 end

@@ -1,0 +1,8 @@
+<% descoped_path = path.slice(0..(path.index("?")-1)) rescue path %>
+<%= form_tag descoped_path, method: 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", name: nil %>
+    <%= link_to "Clear", descoped_path %>
+  </p>
+<% end %>

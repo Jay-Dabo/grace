@@ -6,7 +6,7 @@ class GivingTypesController < ApplicationController
   # GET /giving_types
   # GET /giving_types.json
   def index
-    @giving_types = @church.giving_types.paginate(page: params[:page], per_page: 10)
+    @giving_types = @church.giving_types.search(params[:search]).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html
       format.csv { send_data @giving_types.to_csv }

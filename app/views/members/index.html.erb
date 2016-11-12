@@ -4,13 +4,7 @@
 <% if @members.blank? %>
   <p>You don't have any members, let's go add some <%= link_to "members", new_church_member_path(@church) %>!</p>
 <% else %>
-  <%= form_tag church_members_path, method: 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", name: nil %>
-      <%= link_to "Clear", church_members_path %>
-    </p>
-  <% end %>
+  <%= render partial: "shared/search_form", locals: { path: church_members_path } %>
   <table class="table table-striped">
     <thead>
       <tr>
