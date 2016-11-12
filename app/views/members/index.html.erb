@@ -8,10 +8,11 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
+        <th><%= sortable "first_name" %></th>
+        <th><%= sortable "last_name" %></th>
+        <th><%= sortable "email" %></th>
         <th>Phone</th>
-        <th>Birthday</th>
+        <th><%= sortable "birthday" %></th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -19,7 +20,8 @@
     <tbody>
       <% @members.each do |member| %>
         <tr>
-          <td><%= link_to member.full_name, church_member_path(@church, member) %></td>
+          <td><%= link_to member.first_name, church_member_path(@church, member) %></td>
+          <td><%= link_to member.last_name, church_member_path(@church, member) %></td>
           <td><%= member.email %></td>
           <td><%= number_to_phone(member.phone, area_code: true) %></td>
           <td><%= short_date(member.birthday) %></td>
@@ -32,5 +34,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate @members %>
 <% end %>
-<%= will_paginate @members %>

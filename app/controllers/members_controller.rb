@@ -3,12 +3,13 @@ class MembersController < ApplicationController
   #load_and_authorize_resource
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :set_church
+  helper_method :sort_column, :sort_direction
   layout "admin"
 
   # GET /members
   # GET /members.json
   def index
-    @members = @church.members.search(params[:search]).paginate(page: params[:page])
+    @members = @church.members.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
     respond_to do |format|
       format.html
       format.csv { send_data @members.to_csv}
@@ -70,6 +71,14 @@ class MembersController < ApplicationController
   end
 
   private
+    def sort_column
+      Member.column_names.include?(params[:sort]) ? params[:sort] : "first_name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])

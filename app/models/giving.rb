@@ -20,13 +20,13 @@ class Giving < ActiveRecord::Base
   validates :church_id, :member_id, :giving_type_id, :amount, :date_given,
     presence: true
 
-    def self.search(search)
-      if search
-        joins(:member).where('LOWER(members.first_name) LIKE :search OR LOWER(members.last_name) LIKE :search', search: "%#{search.downcase}")
-      else
-        all
-      end
+  def self.search(search)
+    if search
+      joins(:member).where('LOWER(members.first_name) LIKE :search OR LOWER(members.last_name) LIKE :search', search: "%#{search.downcase}")
+    else
+      all
     end
+  end
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

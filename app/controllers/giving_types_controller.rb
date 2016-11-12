@@ -1,12 +1,13 @@
 class GivingTypesController < ApplicationController
   before_action :set_church
   before_action :set_giving_type, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
   layout "admin"
 
   # GET /giving_types
   # GET /giving_types.json
   def index
-    @giving_types = @church.giving_types.search(params[:search]).paginate(page: params[:page], per_page: 10)
+    @giving_types = @church.giving_types.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html
       format.csv { send_data @giving_types.to_csv }
@@ -68,6 +69,14 @@ class GivingTypesController < ApplicationController
   end
 
   private
+    def sort_column
+      Member.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_giving_type
       @giving_type = GivingType.find(params[:id])

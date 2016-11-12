@@ -33,6 +33,7 @@ function init_datepicker(){
   });
 }
 
+
 jQuery(document).ready(function(){
   flash_messages();
   init_datepicker();
