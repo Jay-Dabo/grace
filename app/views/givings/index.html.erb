@@ -1,5 +1,5 @@
 <h1>Givings <%= link_to 'New Giving', new_church_giving_path(@church), class: "btn grn-btn" %></h1>
-<span>Download: <%= link_to "CSV", church_givings_path(@church, format: "csv") %></span>
+<%= render "graphs" %>
 <hr/>
 <%= render partial: "shared/search_form", locals: { path: church_givings_path } %>
 <table class="table table-striped">
@@ -29,4 +29,5 @@
     <% end %>
   </tbody>
 </table>
+<div>Download: <%= link_to "CSV", church_givings_path(@church, format: "csv") %></div>
 <%= will_paginate @givings %>
