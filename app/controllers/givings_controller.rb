@@ -11,6 +11,7 @@ class GivingsController < ApplicationController
   # GET /givings
   # GET /givings.json
   def index
+    @monthly_givings = @church.givings.where(date_given: Time.now.beginning_of_month..Time.now.end_of_month)
     @givings = @church.givings.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
     respond_to do |format|
       format.html

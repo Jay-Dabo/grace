@@ -1,4 +1,12 @@
 <div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3 class="text-center">Givings this Month</h3>
+        <%= bar_chart @monthly_givings.group(:church_id).sum(:amount), xtitle: "Dollar Amount", ytitle: "#{(Time.now).strftime("%b")}", height: "100px", colors: ["#11f911"] %>
+      </div>
+    </div>
+  </div>
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body">
