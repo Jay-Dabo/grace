@@ -1,24 +1,30 @@
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Givings this Month</h3>
+      </div>
       <div class="panel-body">
-        <h3 class="text-center">Givings this Month</h3>
         <%= bar_chart @monthly_givings.group(:church_id).sum(:amount), xtitle: "Dollar Amount", ytitle: "#{(Time.now).strftime("%b")}", height: "100px", colors: ["#11f911"] %>
       </div>
     </div>
   </div>
   <div class="col-md-6">
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Total Givings by Month</h3>
+      </div>
       <div class="panel-body">
-        <h3 class="text-center">Total Givings by Month</h3>
         <%= line_chart @givings.group_by_month(:date_given).count, xtitle: "Month", ytitle: "Total Givings", height: "200px" %>
       </div>
     </div>
   </div>
   <div class="col-md-6">
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Giving Types</h3>
+      </div>
       <div class="panel-body">
-        <h3 class="text-center">Giving Types</h3>
         <%= pie_chart @givings.joins(:giving_type).group("giving_types.name").count, height: "200px" %>
       </div>
     </div>
