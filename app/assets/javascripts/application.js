@@ -35,8 +35,23 @@ function init_datepicker(){
   });
 }
 
+function sort_paginate(){
+  $("#church-data th a, #church-data .pagination a").on("click", function(){
+    $.getScript(this.href);
+    return false;
+  });
+}
+
+function church_search(){
+  $("#church-search").submit(function(){
+    $.get(this.action, $(this).serialize(), null, "script");
+    return false;
+  });
+}
 
 jQuery(document).ready(function(){
   flash_messages();
   init_datepicker();
+  sort_paginate();
+  church_search();
 });
