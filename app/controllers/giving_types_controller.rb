@@ -11,6 +11,7 @@ class GivingTypesController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @giving_types.to_csv }
+      format.js
     end
   end
 

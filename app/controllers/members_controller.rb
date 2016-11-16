@@ -13,6 +13,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @members.to_csv}
+      format.js
     end
   end
 
