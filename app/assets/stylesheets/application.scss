@@ -70,9 +70,13 @@ a{
 }
 //Side Navigation Styles//
 .side-nav-container{
-  padding-top: 15px;
+  padding-top: 105px;
   padding-bottom: 15px;
   background: $mid-gray;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
 }
 .side-nav{
   margin: 0;
