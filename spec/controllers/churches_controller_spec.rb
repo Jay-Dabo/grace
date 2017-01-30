@@ -26,7 +26,7 @@ RSpec.describe ChurchesController, type: :controller do
       let(:church){ FactoryGirl.create(:church) }
       it "redirects to index action" do
         get :show, id: church
-        expect(response).to redirect_to(action: :index)
+        expect(response).to render_template(:show)
       end
     end
 
