@@ -1,11 +1,13 @@
 require 'rails_helper'
+require 'cancan/matchers'
 
 RSpec.describe GivingTypesController, type: :controller do
+  #Test with authorized user
   describe "with authorized user" do
 
     let(:user){ FactoryGirl.create(:super_admin) }
     let(:church){ FactoryGirl.create(:church, user_id: user.id) }
-    let(:giving_type){ FactoryGirl.create(:giving_type, church_id: church.id)}
+    let(:giving_type){ FactoryGirl.create(:giving_type, church_id: church.id) }
 
     before do
       sign_in user
@@ -43,5 +45,35 @@ RSpec.describe GivingTypesController, type: :controller do
       end
     end
 
-  end
+  end #end authorized user
+
+  #Test with Super Admin
+  describe "with authorized user Super Admin" do
+    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:ability){ Ability.new(user) }
+
+    it "allows the super admin to manage giving types" do
+      expect(ability).to be_able_to(:manage, GivingType.new)
+    end
+  end #end authorized user super_admin
+
+  #Test with Admin
+  describe "with authorized user Admin" do
+    let(:user){ FactoryGirl.create(:admin) }
+    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
+    let(:ability){ Ability.new(user) }
+
+    it "allows the admin to manage their giving types" do
+      expect(ability).to be_able_to(:manage, GivingType.new(church_id: church.id))
+    end
+
+    it "doesn't allows the admin to manage other churches giving types" do
+      expect(ability).to_not be_able_to(:manage, GivingType.new)
+    end
+  end #end authorized user admin
+
+  #Test with Admin Assistant
+  describe "with authorized user Assistant" do
+
+  end #end authorized user assistant
 end

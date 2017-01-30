@@ -13,11 +13,13 @@ class Ability
     #
     if user.has_role? :super_admin
       can :manage, :all
-    else
-      can :read, :all
+    elsif user.has_role? :admin
       can :manage, Church, :user_id => user.id
-      can :manage, [Member, Giving], :church => { :user_id => user.id }
+      can :manage, [Member, Giving, GivingType], :church => { :user_id => user.id }
       can :dashboard
+
+    elsif user.has_role? :assistant
+
     end
     # The first argument to `can` is the action you are giving the user
     # permission to do.

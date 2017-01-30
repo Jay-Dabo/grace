@@ -1,7 +1,8 @@
 require 'rails_helper'
+require 'cancan/matchers'
 
 RSpec.describe ChurchesController, type: :controller do
-
+  #Test with authorized user
   describe "with authorized user" do
     let(:user){ FactoryGirl.create(:super_admin) }
     before do
@@ -57,6 +58,34 @@ RSpec.describe ChurchesController, type: :controller do
       end
     end
 
-  end
+  end #end authorized user
 
+  #Test with Super Admin
+  describe "with authorized user Super Admin" do
+    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:ability){ Ability.new(user) }
+
+    it "allows the super admin to manage any church" do
+      expect(ability).to be_able_to(:manage, Church.new)
+    end
+  end #end authorized user super_admin
+
+  #Test with Admin
+  describe "with authorized user Admin" do
+    let(:user){ FactoryGirl.create(:admin) }
+    let(:ability){ Ability.new(user) }
+
+    it "allows the admin to manage their church" do
+      expect(ability).to be_able_to(:manage, Church.new(user: user))
+    end
+
+    it "doesn't allow admin to manage other churches" do
+      expect(ability).to_not be_able_to(:manage, Church.new)
+    end
+  end #end authorized user admin
+
+  #Test with Admin Assistant
+  describe "with authorized user Assistant" do
+
+  end #end authorized user assistant
 end
