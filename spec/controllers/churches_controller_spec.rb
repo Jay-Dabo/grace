@@ -25,7 +25,13 @@ RSpec.describe ChurchesController, type: :controller do
     #test the show action
     describe "GET #show" do
       let(:church){ FactoryGirl.create(:church) }
-      it "redirects to index action" do
+
+      it "has a 200 response status" do
+        get :show, id: church
+        expect(response.status).to eq(200)
+      end
+
+      it "renders the show template" do
         get :show, id: church
         expect(response).to render_template(:show)
       end
@@ -41,6 +47,14 @@ RSpec.describe ChurchesController, type: :controller do
       it "should be a new church" do
         get :new
         expect(assigns(:church)).to be_a_new(Church)
+      end
+    end
+
+    #test the create action
+    describe "GET #create" do
+      it "creates a new church" do
+        church_params = FactoryGirl.attributes_for(:church)
+        expect{ post :create, church: church_params }.to change(Church, :count).by(1)
       end
     end
 

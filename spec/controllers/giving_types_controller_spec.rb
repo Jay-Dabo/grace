@@ -13,6 +13,7 @@ RSpec.describe GivingTypesController, type: :controller do
       sign_in user
     end
 
+    #test index action
     describe "GET #index" do
       before do
         get :index, church_id: church.id
@@ -31,6 +32,7 @@ RSpec.describe GivingTypesController, type: :controller do
       end
     end
 
+    #test show action
     describe "GET #show" do
       before do
         get :show, { id: giving_type.id, church_id: church.id }
@@ -42,6 +44,44 @@ RSpec.describe GivingTypesController, type: :controller do
 
       it "renders the show template" do
         expect(response).to render_template(:show)
+      end
+    end
+
+    #test new action
+    describe "GET #new" do
+      before do
+        get :new, church_id: church.id
+      end
+
+      it "has a 200 response status" do
+        expect(response.status).to eq(200)
+      end
+
+      it "should be a new giving_type" do
+        expect(assigns(:giving_type)).to be_a_new(GivingType)
+      end
+    end
+
+    #test create action
+    describe "GET #create" do
+      it "creates a new giving type" do
+        giving_type_params = FactoryGirl.attributes_for(:giving_type, church_id: church.id)
+        expect{ post :create, church_id: church.id, giving_type: giving_type_params }.to change(GivingType, :count).by(1)
+      end
+    end
+
+    #test edit action
+    describe "GET #edit" do
+      before do
+        get :edit, { id: giving_type.id, church_id: church.id }
+      end
+
+      it "has a 200 response status" do
+        expect(response.status).to eq(200)
+      end
+
+      it "renders the edit template" do
+        expect(response).to render_template(:edit)
       end
     end
 
