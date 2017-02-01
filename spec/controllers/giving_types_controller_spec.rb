@@ -63,7 +63,7 @@ RSpec.describe GivingTypesController, type: :controller do
     end
 
     #test create action
-    describe "GET #create" do
+    describe "POST #create" do
       it "creates a new giving type" do
         giving_type_params = FactoryGirl.attributes_for(:giving_type, church_id: church.id)
         expect{ post :create, church_id: church.id, giving_type: giving_type_params }.to change(GivingType, :count).by(1)
@@ -71,7 +71,7 @@ RSpec.describe GivingTypesController, type: :controller do
     end
 
     #test edit action
-    describe "GET #edit" do
+    describe "PUT #edit" do
       before do
         get :edit, { id: giving_type.id, church_id: church.id }
       end
@@ -82,6 +82,18 @@ RSpec.describe GivingTypesController, type: :controller do
 
       it "renders the edit template" do
         expect(response).to render_template(:edit)
+      end
+    end
+
+    #test destroy action
+    describe "DELETE #destroy" do
+      before do
+        @church = FactoryGirl.create(:church)
+        @giving_type = FactoryGirl.create(:giving_type, church_id: @church.id)
+      end
+
+      it "deletes a giving_type" do
+        expect{ delete :destroy, id: @giving_type.id, church_id: @church.id }.to change(GivingType, :count).by(-1)
       end
     end
 

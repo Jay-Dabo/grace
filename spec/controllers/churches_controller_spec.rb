@@ -51,7 +51,7 @@ RSpec.describe ChurchesController, type: :controller do
     end
 
     #test the create action
-    describe "GET #create" do
+    describe "POST #create" do
       it "creates a new church" do
         church_params = FactoryGirl.attributes_for(:church)
         expect{ post :create, church: church_params }.to change(Church, :count).by(1)
@@ -59,7 +59,7 @@ RSpec.describe ChurchesController, type: :controller do
     end
 
     #test the edit action
-    describe "GET #edit" do
+    describe "PUT #edit" do
       let(:church){ FactoryGirl.create(:church) }
       it "has a 200 response status" do
         get :edit, id: church
@@ -69,6 +69,17 @@ RSpec.describe ChurchesController, type: :controller do
       it "renders the edit template" do
         get :edit, id: church
         expect(response).to render_template(:edit)
+      end
+    end
+
+    #test the delete action
+    describe "DELETE #destroy" do
+      before do
+        @church = FactoryGirl.create(:church)
+      end
+      
+      it "deletes a church" do
+        expect{ delete :destroy, id: @church.id }.to change(Church, :count).by(-1)
       end
     end
 
