@@ -65,12 +65,63 @@ RSpec.describe GivingsController, type: :controller do
     end
 
     #describe create action
-    describe "POST #new" do
+    describe "POST #create" do
       it "creates a new giving" do
         giving_params = FactoryGirl.attributes_for(:giving, church_id: church.id, member_id: member.id, giving_type_id: giving_type.id)
         expect{ post :create, church_id: church.id, giving: giving_params }.to change(Giving, :count).by(1)
       end
     end
 
+    #describe edit action
+    describe "PUT #edit" do
+      before do
+        get :edit, id: giving.id, church_id: church.id
+      end
+
+      it "has a 200 response code" do
+        expect(response.status).to eq(200)
+      end
+
+      it "should render the edit template" do
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    #describe destroy action
+    describe "DELETE #destroy" do
+      before do
+        @giving = FactoryGirl.create(:giving)
+      end
+
+      it "deletes a giving" do
+        expect{ delete :destroy, id: @giving.id, church_id: church.id }.to change(Giving, :count).by(-1)
+      end
+    end
+
+  end
+
+  #test with super admin
+  describe "with authorized user super_admin" do
+    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:ability){ Ability.new(user) }
+
+    it "allows a super admin to manage any giving" do
+      expect(ability).to be_able_to(:manage, Giving.new)
+    end
+  end
+
+  #test with admin
+  describe "with authorized user admin" do
+    let(:user){ FactoryGirl.create(:admin) }
+    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
+    let(:ability){ Ability.new(user) }
+
+    it "allows an admin to manage their givings" do
+      expect(ability).to be_able_to(:manage, Giving.new(church_id: church.id))
+    end
+
+    it "doesn't allow an admin to manage other churches givings" do
+      expect(ability).to_not be_able_to(:manage, Giving.new)
+    end
   end
 end
