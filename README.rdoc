@@ -3,7 +3,6 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-<img src="https://codeship.com/projects/207501/status?branch=master" alt="Codeship"/>
 
 Things you may want to cover:
 
