@@ -13,6 +13,11 @@ STDOUT.sync = true
 # u = User.find_by(email: "mike@mikelangston.me")
 # u.add_role("super_admin")
 # print "."
+if Rails.env = "production"
+  User.find_or_create_by(first_name: "Mike").update_attributes(last_name: "Langston", email: "mike@mikelangston.me", password: "0jra~FnXqf5}", password_confirmation: "0jra~FnXqf5}")
+  u = User.find_by(first_name: "Mike")
+  u.add_role(:super_admin)
+end
 
 if Rails.env == "development"
   Member.destroy_all
