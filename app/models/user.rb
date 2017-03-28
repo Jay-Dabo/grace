@@ -21,6 +21,7 @@
 #
 
 class User < ActiveRecord::Base
+  after_create :assign_default_role
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -30,4 +31,8 @@ class User < ActiveRecord::Base
   has_one :church, dependent: :destroy
 
   validates :email, :encrypted_password, presence: true
+
+  def assign_default_role
+    add_role(:admin)
+  end
 end
