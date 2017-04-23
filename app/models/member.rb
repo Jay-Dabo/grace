@@ -29,6 +29,9 @@ class Member < ActiveRecord::Base
     presence: true
   validates :email, uniqueness: true
 
+  include PgSearch
+  pg_search_scope :search_members, against: [:first_name, :last_name, :email]
+
   ValidGenders = %w[N/A female male]
 
   def full_name
@@ -41,7 +44,7 @@ class Member < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('LOWER(first_name) LIKE :search OR LOWER(last_name) LIKE :search OR email LIKE :search', search: "%#{search.downcase}")
+      search_members(search)
     else
       all
     end

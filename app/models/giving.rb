@@ -20,9 +20,12 @@ class Giving < ActiveRecord::Base
   validates :church_id, :member_id, :giving_type_id, :amount, :date_given,
     presence: true
 
+  include PgSearch
+  pg_search_scope :search_givings, associated_against: { member: [:first_name, :last_name], giving_type: [:name] }
+
   def self.search(search)
     if search
-      joins(:member).where('LOWER(members.first_name) LIKE :search OR LOWER(members.last_name) LIKE :search', search: "%#{search.downcase}")
+      search_givings(search)
     else
       all
     end

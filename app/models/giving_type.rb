@@ -15,9 +15,12 @@ class GivingType < ActiveRecord::Base
 
   validates :church_id, :name, presence: true
 
+  include PgSearch
+  pg_search_scope :search_giving_types, against: :name
+
   def self.search(search)
     if search
-      where('LOWER(name) LIKE :search', search: "%#{search.downcase}")
+      search_giving_types(search)
     else
       all
     end
