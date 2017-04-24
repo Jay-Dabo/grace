@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :church
   load_and_authorize_resource :group, through: :church
+  layout "admin"
 
   # GET /groups
   # GET /groups.json

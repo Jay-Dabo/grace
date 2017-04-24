@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :group_image %>
+    <%= f.input :name, required: true, label: false, placeholder: "Group Name", input_html: { class: "form-control" } %>
+    <%= f.input :description, label: false, placeholder: "Short description of Group", input_html: { class: "form-control" } %>
+    <%= f.input :group_image, as: :file, input_html: { class: "form-control" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn grn-btn block" %>
   </div>
 <% end %>

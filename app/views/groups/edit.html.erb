@@ -1,6 +1,3 @@
-<h1>Editing Group</h1>
-
+<h1>Editing Group <%= link_to 'Cancel', church_groups_path(@church), class: "btn grn-btn" %></h1>
+<hr />
 <%= render 'form' %>
-
-<%= link_to 'Show', church_group_path(@church, @group) %> |
-<%= link_to 'Back', church_groups_path(@church) %>
