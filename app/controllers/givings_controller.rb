@@ -1,6 +1,7 @@
 class GivingsController < ApplicationController
   before_action :authenticate_user!
-  #load_and_authorize_resource
+  load_and_authorize_resource :church
+  load_and_authorize_resource :giving, through: :church
   before_action :set_church
   before_action :set_members
   before_action :set_giving_types

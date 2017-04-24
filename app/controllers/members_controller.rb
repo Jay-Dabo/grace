@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
   before_action :authenticate_user!
-  #load_and_authorize_resource
+  load_and_authorize_resource :church
+  load_and_authorize_resource :member, through: :church
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :set_church
   helper_method :sort_column, :sort_direction

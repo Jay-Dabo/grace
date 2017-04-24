@@ -1,6 +1,5 @@
 <ul class="side-nav">
-  <li><%= link_to "<i class='fa fa-tasks'></i> Dashboard".html_safe, dashboard_path %></li>
-  <li><%= link_to "<i class='fa fa-home'></i> My Church".html_safe, church_path(@church) %></li>
+  <li><%= link_to "<i class='fa fa-tasks'></i> Dashboard".html_safe, church_path(@church) %></li>
   <li><%= link_to "<i class='fa fa-usd'></i> Givings".html_safe, church_givings_path(@church) %></li>
   <li><%= link_to "<i class='fa fa-list-ol'></i> Giving Types".html_safe, church_giving_types_path(@church) %></li>
   <li><%= link_to "<i class='fa fa-user'></i> Members".html_safe, church_members_path(@church) %></li>

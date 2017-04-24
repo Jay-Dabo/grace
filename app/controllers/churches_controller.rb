@@ -13,6 +13,10 @@ class ChurchesController < ApplicationController
   # GET /churches/1
   # GET /churches/1.json
   def show
+    @members = @church.members
+    @givings = @church.givings
+    @monthly_givings = @church.givings.where(date_given: Time.now.beginning_of_month..Time.now.end_of_month)
+    @giving_types = @church.giving_types
   end
 
   # GET /churches/new

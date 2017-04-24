@@ -1,7 +1,9 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_church
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  #load_and_authorize_resource
+  load_and_authorize_resource :church
+  load_and_authorize_resource :group, through: :church
 
   # GET /groups
   # GET /groups.json

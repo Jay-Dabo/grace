@@ -1,7 +1,9 @@
 class GivingTypesController < ApplicationController
   before_action :set_church
   before_action :set_giving_type, only: [:show, :edit, :update, :destroy]
-  #load_and_authorize_resource
+  before_action :authenticate_user!
+  load_and_authorize_resource :church
+  load_and_authorize_resource :giving_type, through: :church
   helper_method :sort_column, :sort_direction
   layout "admin"
 
