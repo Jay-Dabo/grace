@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<p>
+  <strong>Group image:</strong>
+  <%= @group.group_image %>
+</p>
+
+<%= link_to 'Edit', edit_church_group_path(@church, @group) %> |
+<%= link_to 'Back', church_groups_path(@church) %>
