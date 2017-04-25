@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = @church.groups.all
   end
 
   # GET /groups/1
@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-
+    @group.church_id = @church.id
     respond_to do |format|
       if @group.save
         format.html { redirect_to [@church, @group], notice: 'Group was successfully created.' }

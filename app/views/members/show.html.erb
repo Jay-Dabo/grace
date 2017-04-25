@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <h1><%= @member.full_name %><small>, <%= @member.gender.titleize %></small></h1>
+  <h1><%= @member.full_name %><small> <%= @member.gender %></small></h1>
   <hr/>
   <div class="col-md-3">
     <%= image_tag(@member.member_image_url(:large), class: "img-responsive") %>
