@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424012602) do
+ActiveRecord::Schema.define(version: 20170501163819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20170424012602) do
     t.integer  "giving_type_id"
     t.integer  "church_id"
   end
+
+  create_table "group_members", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "group_members", ["group_id"], name: "index_group_members_on_group_id", using: :btree
+  add_index "group_members", ["member_id"], name: "index_group_members_on_member_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -112,4 +122,6 @@ ActiveRecord::Schema.define(version: 20170424012602) do
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
   add_foreign_key "giving_types", "churches"
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "group_members", "members"
 end

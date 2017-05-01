@@ -1,8 +1,15 @@
 <h1><%= @group.name %> <%= link_to 'Edit', edit_church_group_path(@church, @group), class: "btn grn-btn" %> <%= link_to 'Back', church_groups_path(@church), class: "btn grn-btn" %></h1>
-
-<p><%= @group.description %></p>
-
-<p>
-  <strong>Group image:</strong>
-  <%= @group.group_image %>
-</p>
+<hr />
+<div class="row">
+  <div class="col-md-4">
+    <%= @group.group_image %>
+  </div>
+  <div class="col-md-8">
+    <p><%= @group.description %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Group Members <%= link_to "Add Member", new_church_group_member_path(@church), class: "btn grn-btn" %></h2>
+  </div>
+</div>

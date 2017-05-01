@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @group_member.group %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @group_member.member.full_name %>
+</p>
+
+<%= link_to 'Edit', edit_church_group_member_path(@church, @group_member) %> |
+<%= link_to 'Back', church_group_members_path(@church) %>
