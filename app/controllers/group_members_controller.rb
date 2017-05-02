@@ -3,7 +3,7 @@ class GroupMembersController < ApplicationController
   load_and_authorize_resource :church
   load_and_authorize_resource :member, through: :church
   before_action :set_church
-  before_action :set_groups
+  before_action :set_group
   before_action :set_members
   before_action :set_group_member, only: [:show, :edit, :update, :destroy]
   layout "admin"
@@ -34,7 +34,7 @@ class GroupMembersController < ApplicationController
     @group_member = GroupMember.new(group_member_params)
     respond_to do |format|
       if @group_member.save
-        format.html { redirect_to [@church, @group_member], notice: 'Group member was successfully created.' }
+        format.html { redirect_to [@church, @group, @group_member], notice: 'Group member was successfully created.' }
         format.json { render :show, status: :created, location: @group_member }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class GroupMembersController < ApplicationController
   def update
     respond_to do |format|
       if @group_member.update(group_member_params)
-        format.html { redirect_to [@church, @group_member], notice: 'Group member was successfully updated.' }
+        format.html { redirect_to [@church, @group, @group_member], notice: 'Group member was successfully updated.' }
         format.json { render :show, status: :ok, location: @group_member }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class GroupMembersController < ApplicationController
   def destroy
     @group_member.destroy
     respond_to do |format|
-      format.html { redirect_to church_group_members_url, notice: 'Group member was successfully destroyed.' }
+      format.html { redirect_to church_group_group_members_url, notice: 'Group member was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,8 +77,8 @@ class GroupMembersController < ApplicationController
       @church = current_user.church
     end
 
-    def set_groups
-      @groups = @church.groups
+    def set_group
+      @group = Group.find(params[:group_id])
     end
 
     def set_members

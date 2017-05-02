@@ -1,4 +1,4 @@
-<h1>Group Members <%= link_to 'New Group member', new_church_group_member_path(@church), class: "btn grn-btn" %></h1>
+<h1>Group Members <%= link_to 'New Group member', new_church_group_group_member_path(@church, @group), class: "btn grn-btn" %></h1>
 
 <table class="table table-stripes">
   <thead>
@@ -12,12 +12,12 @@
   <tbody>
     <% @group_members.each do |group_member| %>
       <tr>
-        <td><%= group_member.group %></td>
+        <td><%= @group.name %></td>
         <td><%= group_member.member.full_name %></td>
         <td>
-          <%= link_to 'Show', church_group_member_path(@church, group_member) %>
-          <%= link_to 'Edit', edit_church_group_member_path(@church, group_member) %>
-          <%= link_to 'Destroy', [@church, group_member], method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Show', church_group_group_member_path(@church, @group, group_member) %>
+          <%= link_to 'Edit', edit_church_group_group_member_path(@church, @group, group_member) %>
+          <%= link_to 'Destroy', [@church, @group, group_member], method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

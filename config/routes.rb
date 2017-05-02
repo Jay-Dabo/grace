@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     resources :members
     resources :givings
     resources :giving_types
-    resources :groups
-    resources :group_members
+    resources :groups do
+      resources :group_members
+    end
   end
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.

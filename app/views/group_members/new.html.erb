@@ -1,5 +1,3 @@
-<h1>New Group Member</h1>
+<h1>New Group Member <%= link_to 'Cancel', church_group_group_members_path(@church, @group), class: "btn grn-btn" %></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', church_group_members_path(@church) %>
