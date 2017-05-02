@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First Nmae</th>
+      <th>Last Nmae</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_members.each do |group_member| %>
+    <tr>
+      <td><%= group_member.member.first_name %></td>
+      <td><%= group_member.member.last_name %></td>
+      <td><%= group_member.member.email %></td>
+      <td>
+
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
