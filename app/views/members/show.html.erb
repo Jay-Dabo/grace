@@ -1,16 +1,13 @@
-<div class="col-md-12">
-  <h1><%= @member.full_name %><small> <%= @member.gender %></small></h1>
-  <hr/>
-  <div class="col-md-3">
-    <%= image_tag(@member.member_image_url(:large), class: "img-responsive") %>
-    <%= link_to 'Edit', edit_church_member_path(@church, @member), class: "btn grn-btn block" %>
-    <%= link_to 'Cancel', church_members_path(@church), class: "btn grn-btn block" %>
-  </div>
-  <div class="col-md-9">
-    <p><strong>Address:</strong><br/><%= @member.full_address %></p>
-    <p><strong>Phone:</strong><br/><%= @member.phone %></p>
-    <p><strong>Email Address:</strong><br/><%= @member.email %></p>
-    <p><strong>Birthday:</strong><br/><%= @member.birthday %></p>
-    <p><strong>Interest/Description:</strong><br/><%= @member.interest %></p>
-  </div>
+
+<h1><%= @member.full_name %> <%= link_to 'Edit', edit_church_member_path(@church, @member), class: "btn grn-btn" %> <%= link_to 'View All', church_members_path(@church), class: "btn grn-btn" %></h1>
+<hr/>
+<div class="col-md-9">
+  <p><strong>Address:</strong><br/><%= @member.full_address %></p>
+  <p><strong>Phone:</strong><br/><%= @member.phone %></p>
+  <p><strong>Email Address:</strong><br/><%= @member.email %></p>
+  <p><strong>Birthday:</strong><br/><%= @member.birthday %></p>
+  <p><strong>Interest/Description:</strong><br/><%= @member.interest %></p>
+</div>
+<div class="col-md-3">
+  <%= image_tag(@member.member_image_url(:large), class: "img-responsive") %>
 </div>

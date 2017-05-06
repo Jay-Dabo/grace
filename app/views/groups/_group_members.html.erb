@@ -14,8 +14,8 @@
       <td><%= group_member.member.first_name %></td>
       <td><%= group_member.member.last_name %></td>
       <td><%= group_member.member.email %></td>
-      <td>
-
+      <td class="actions">
+        <%= link_to '<i class="fa fa-trash"></i>'.html_safe, [@church, @group, group_member], method: :delete, data: { confirm: 'Are you sure?' }, class: "action delete" %>
       </td>
     </tr>
     <% end %>
