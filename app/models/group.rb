@@ -13,8 +13,9 @@
 
 class Group < ActiveRecord::Base
   belongs_to :church
-  has_many :group_members
-  accepts_nested_attributes_for :group_members
+  has_many :group_members, dependent: :destroy
+  mount_uploader :group_image, GroupUploader
+  #accepts_nested_attributes_for :group_members
 
   validates :name, presence: true
 end

@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     current_church = current_user.church.id
     "/churches/#{current_church}"
   end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render file: "#{Rails.root}/public/403.html", status: 403, layout: "application"
+  end
 end

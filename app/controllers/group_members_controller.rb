@@ -1,7 +1,8 @@
 class GroupMembersController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource :church
-  load_and_authorize_resource :member, through: :church
+  load_and_authorize_resource :group
+  load_and_authorize_resource :group_member, through: :group
   before_action :set_church
   before_action :set_group
   before_action :set_members
