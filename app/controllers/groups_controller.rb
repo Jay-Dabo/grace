@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :church
   load_and_authorize_resource :group, through: :church
+  helper_method :sort_column, :sort_direction
   layout "admin"
 
   # GET /groups

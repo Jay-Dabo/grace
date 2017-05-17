@@ -18,4 +18,12 @@ class Group < ActiveRecord::Base
   #accepts_nested_attributes_for :group_members
 
   validates :name, presence: true
+
+  def self.search(search)
+    if search
+      search_members(search)
+    else
+      all
+    end
+  end
 end

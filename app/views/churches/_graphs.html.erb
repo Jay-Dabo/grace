@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-8">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title text-center">Givings this Month</h3>
@@ -35,6 +35,16 @@
     </div>
     <div class="panel-body">
       <%= pie_chart @givings.joins(:giving_type).group("giving_types.name").count, height: "200px" %>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title text-center">Groups</h3>
+    </div>
+    <div class="panel-body">
+      <%= pie_chart @groups.group(:name).count, height: "200px" %>
     </div>
   </div>
 </div>

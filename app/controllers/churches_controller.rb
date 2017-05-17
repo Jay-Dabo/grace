@@ -17,6 +17,7 @@ class ChurchesController < ApplicationController
     @givings = @church.givings
     @monthly_givings = @church.givings.where(date_given: Time.now.beginning_of_month..Time.now.end_of_month)
     @giving_types = @church.giving_types
+    @groups = @church.groups
   end
 
   # GET /churches/new

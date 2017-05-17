@@ -9,10 +9,10 @@
       <h3 class="panel-title">Group Members</h3>
     </div>
     <div class="panel-body">
-
+      
     </div>
     <div id="church-data">
-      <%= render partial: "group_members" %>
+      <%= render partial: "group_members" if @group_members.present? %>
     </div>
   </div>
 </div>
