@@ -1,2 +1,8 @@
 <h1>Groups <%= link_to 'New Group', new_church_group_path(@church), class: "btn grn-btn" %></h1>
-<%= render "groups" %>
+<div class="row">
+  <%= link_to '<i class="fa fa-th"></i>'.html_safe, church_groups_path(@church), title: "Grid View", remote: true, class: "grid-view" %>
+  <%= link_to '<i class="fa fa-bars"></i>'.html_safe, church_groups_path(@church), title: "Table View", remote: true, class: "table-view" %>
+</div>
+<div id="church-data">
+  <%= render "groups_grid" %>
+</div>
