@@ -19,11 +19,24 @@ class Group < ActiveRecord::Base
 
   validates :name, presence: true
 
+  include PgSearch
+  pg_search_scope :search_groups, against: [:name]
+
   def self.search(search)
     if search
-      search_members(search)
+      search_groups(search)
     else
       all
     end
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |row|
+        csv << row.attributes.values_at(*column_names)
+      end
+    end
+  end
+  
 end

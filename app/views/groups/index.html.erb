@@ -4,6 +4,9 @@
     <h3 class="panel-title">Groups</h3>
   </div>
   <div class="panel-body">
-    <%= render "groups" %>
+    <%= render partial: "shared/search_form", locals: { path: church_groups_path } %>
+    <div id="church-data">
+      <%= render "groups" %>
+    </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <table class="table table-striped">
   <thead>
-    <th>Group</th>
+    <th><%= sortable "name", "Group Name" %></th>
     <th>Total Members</th>
     <th>Actions</th>
   </thead>
@@ -19,3 +19,5 @@
     <% end %>
   </tbody>
 </table>
+<div>Download: <%= link_to "CSV", church_groups_path(@church, format: "csv") %></div>
+<%= will_paginate @groups %>

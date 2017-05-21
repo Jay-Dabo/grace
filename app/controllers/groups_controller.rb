@@ -10,9 +10,10 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = @church.groups.all
+    @groups = @church.groups.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
     respond_to do |format|
       format.html
+      format.csv { send_data @groups.to_csv }
       format.js
     end
   end
@@ -73,6 +74,14 @@ class GroupsController < ApplicationController
   end
 
   private
+    def sort_column
+      Group.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])
