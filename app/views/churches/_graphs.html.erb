@@ -4,7 +4,7 @@
       <h3 class="panel-title text-center">Givings this Month</h3>
     </div>
     <div class="panel-body">
-      <%= bar_chart @monthly_givings.group(:church_id).sum(:amount), xtitle: "Dollar Amount", ytitle: "#{(Time.now).strftime("%b")}", height: "100px", colors: ["#11f911"] %>
+      <%= bar_chart @monthly_givings.group(:church_id).sum(:amount), xtitle: "Dollar Amount", ytitle: "#{(Time.now).strftime("%b")}", height: "200px", colors: ["#11f911"] %>
     </div>
   </div>
 </div>
@@ -44,7 +44,7 @@
       <h3 class="panel-title text-center">Groups</h3>
     </div>
     <div class="panel-body">
-      <%= pie_chart @groups.group(:name).count, height: "200px" %>
+      <%= pie_chart @groups.joins(:group_members).group("groups.name").count, height: "200px" %>
     </div>
   </div>
 </div>

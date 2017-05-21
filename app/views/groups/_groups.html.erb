@@ -7,7 +7,7 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.name %></td>
+        <td><%= link_to group.name, church_group_path(@church, group) %></td>
         <td><%= group.group_members.count %></td>
         <td class="actions">
           <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_group_path(@church, group), title: 'View', class: 'action view' %>
