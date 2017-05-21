@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = @church.groups.all
+    @partial = params[:view] || "groups_grid"
     respond_to do |format|
       format.html
       format.js
