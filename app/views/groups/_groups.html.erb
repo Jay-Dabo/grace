@@ -1,12 +1,14 @@
 <table class="table table-striped">
   <thead>
     <th>Group</th>
+    <th>Total Members</th>
     <th>Actions</th>
   </thead>
   <tbody>
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
+        <td><%= group.group_members.count %></td>
         <td class="actions">
           <%= link_to "<i class='fa fa-eye'></i>".html_safe, church_group_path(@church, group), title: 'View', class: 'action view' %>
           <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_church_group_path(@church, group), title: 'Edit', class: 'action edit' %>

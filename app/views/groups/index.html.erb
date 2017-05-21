@@ -1,13 +1,9 @@
 <h1>Groups <%= link_to 'New Group', new_church_group_path(@church), class: "btn grn-btn" %></h1>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">
-      Groups
-      <%= link_to '<i class="fa fa-th"></i>'.html_safe, church_groups_path(@church, view: "groups_grid"), title: "Grid View", class: "grid-view" %>
-      <%= link_to '<i class="fa fa-bars"></i>'.html_safe, church_groups_path(@church, view: "groups_table"), title: "Table View", class: "table-view" %>
-    </h3>
+    <h3 class="panel-title">Groups</h3>
   </div>
   <div class="panel-body">
-    <%= render @partial %>
+    <%= render "groups" %>
   </div>
 </div>

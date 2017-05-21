@@ -1,12 +1,12 @@
 <h1>Members <%= link_to 'New Member', new_church_member_path(@church), class: "btn grn-btn" %></h1>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">All Members</h3>
+    <h3 class="panel-title">Members</h3>
   </div>
   <div class="panel-body">
     <%= render partial: "shared/search_form", locals: { path: church_members_path } %>
-  </div>
-  <div id="church-data">
-    <%= render partial: "members" %>
+    <div id="church-data">
+      <%= render "members" %>
+    </div>
   </div>
 </div>
