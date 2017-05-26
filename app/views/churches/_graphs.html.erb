@@ -4,7 +4,7 @@
       <h3 class="panel-title text-center">Givings this Month</h3>
     </div>
     <div class="panel-body">
-      <%= bar_chart @monthly_givings.group(:church_id).sum(:amount), xtitle: "Dollar Amount", ytitle: "#{(Time.now).strftime("%b")}", max: 2000, height: "200px", colors: ["#11f911"], download: true, download: "Givings" %>
+      <%= bar_chart @monthly_givings.group(:church_id).sum(:amount), xtitle: "Dollar Amount", ytitle: "#{(Time.now).strftime("%b")}", height: "200px", colors: ["#11f911"], download: true, download: "Givings" %>
     </div>
   </div>
 </div>
