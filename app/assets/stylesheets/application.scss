@@ -19,6 +19,7 @@
 
 //General Styles//
 body{
+  font-family: $body-font;
   padding-top: 92px;
   background: $lite-gray;
   .main-content{
@@ -199,7 +200,6 @@ a{
       padding: 60px 0 60px 0;
       h1{
         font-weight: 900;
-        font-style: italic;
         font-size: 3.2vw;
         text-shadow: 1px 1px 1px $lite-gray;
         margin-bottom: 20px;
