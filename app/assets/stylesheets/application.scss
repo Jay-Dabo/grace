@@ -104,7 +104,7 @@ a{
 }
 //Side Navigation Styles//
 .side-nav-container{
-  padding-top: 105px;
+  padding-top: 50px;
   padding-bottom: 15px;
   background: $white;
   position: fixed;
@@ -112,6 +112,16 @@ a{
   bottom: 0;
   left: 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.7);
+  h3{
+    font-weight: 900;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid $red;
+    span{
+      font-weight: 400;
+    }
+  }
 }
 .side-nav{
   margin: 0;
