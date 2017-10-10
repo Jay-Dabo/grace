@@ -20,11 +20,14 @@
 //General Styles//
 body{
   font-family: $body-font;
-  padding-top: 92px;
-  background: $lite-gray;
+  background: $white;
   .main-content{
     padding-top: 50px;
     padding-bottom: 50px;
+    .row{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
     p{
       font-size: 18px;
       line-height: 1.5em;
@@ -34,11 +37,25 @@ body{
 h1,h2,h3,h4,h5,h6{
   color: $blue;
   font-family: $heading-font;
-  font-weight: 700;
+  font-weight: 900;
+  margin: 0 0 10px 0;
   .main-btn{
     display: inline-block;
     margin: 0 0 0 20px;
   }
+}
+header{
+  text-align: center;
+  margin-bottom: 30px;
+}
+h1{
+  color: $red;
+  font-size: 2.7vw;
+}
+h2{
+  color: $blue;
+  font-weight: 400;
+  font-size: 2vw;
 }
 hr{
   border-top: 2px solid $dark-gray;
@@ -47,10 +64,25 @@ a{
   color: $blue;
 }
 //Navigation Styles//
+.navbar-wrapper{
+  position: relative;
+  z-index: 999;
+  background: url('nav-bg.jpg') no-repeat center center;
+  background-size: cover;
+}
 .navbar-default{
-  background: $mid-gray;
-  border-bottom: none;
-  box-shadow: 0 0 3px rgba(0,0,0,0.6);
+  background: transparent;
+  border: none;
+  .logo a{
+    color: $white;
+    font-family: $heading-font;
+    font-weight: 900;
+    font-size: 52px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    span{
+      font-weight: 400;
+    }
+  }
 }
 #navbar{
   margin-top: 25px;
@@ -74,11 +106,12 @@ a{
 .side-nav-container{
   padding-top: 105px;
   padding-bottom: 15px;
-  background: $mid-gray;
+  background: $white;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.7);
 }
 .side-nav{
   margin: 0;
@@ -96,14 +129,14 @@ a{
       font-family: $heading-font;
       font-weight: 700;
       font-size: 18px;
-      background: $mid-gray;
+      background: $white;
       padding: 10px 10px 10px 20px;
       i{
         width: 24px;
         text-align: center;
       }
       &:hover{
-        color: $lite-gray;
+        color: $white;
         text-decoration: none;
         background: $blue;
       }
@@ -135,13 +168,13 @@ a{
 }
 .btn{
   &.main-btn{
-    color: $white;
+    color: $red;
     font-family: $heading-font;
     font-weight: 700;
     font-size: 20px;
     background: transparent;
     border-radius: 30px;
-    border: 3px solid $white;
+    border: 3px solid $red;
     &:hover{
       color: $white;
       background: $red;
@@ -189,38 +222,64 @@ a{
 }
 .panel-default{
   .panel-heading{
+    background: $blue;
     .panel-title{
-      color: $blue;
+      color: $white;
     }
   }
 }
 //Homepage Styles//
+body.home{
+  .navbar-wrapper{
+    background: none;
+  }
+}
 .banner{
   &.home{
     background: url('banner-home.jpg') no-repeat bottom center;
     background-size: cover;
+    margin-top: -104px;
+    height: 100vh;
+    padding-top: 35vh;
+    position: relative;
     .banner-text{
       padding: 60px 0 60px 0;
       h1{
+        color: $white;
         font-weight: 900;
-        font-size: 3.2vw;
-        text-shadow: 1px 1px 1px $lite-gray;
-        margin-bottom: 20px;
-        span{
-          font-weight: 500;
+        font-size: 3.5vw;
+        margin-bottom: 50px;
+        text-shadow: 1px 2px 2px rgba(0,0,0,0.7);
+      }
+      .main-btn{
+        color: $white;
+        border-color: $white;
+        &:hover{
+          border-color: $red;
         }
+      }
+      i{
+        color: $white;
+        font-size: 50px;
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
       }
     }
   }
 }
 .features{
-  background: $mid-gray;
-  padding: 60px 0;
+  background: $blue;
   h3{
-    color: $blue;
+    color: $white;
+    font-size: 20px;
     .feature-icon{
       margin-right: 15px;
     }
+  }
+  p{
+    color: $white;
   }
 }
 //Form Styles//
