@@ -35,7 +35,7 @@ h1,h2,h3,h4,h5,h6{
   color: $blue;
   font-family: $heading-font;
   font-weight: 700;
-  .grn-btn{
+  .main-btn{
     display: inline-block;
     margin: 0 0 0 20px;
   }
@@ -57,13 +57,14 @@ a{
   ul{
     li{
       a{
+        color: $white;
         font-family: $heading-font;
         font-weight: 500;
         font-size: 16px;
         border-bottom: 3px solid transparent;
         &:hover{
-          color: $green;
-          border-color: $green;
+          color: $white;
+          border-color: $white;
         }
       }
     }
@@ -133,16 +134,18 @@ a{
   }
 }
 .btn{
-  &.grn-btn{
-    color: $lite-gray;
+  &.main-btn{
+    color: $white;
     font-family: $heading-font;
     font-weight: 700;
     font-size: 20px;
-    background: $green;
-    border-radius: 0;
+    background: transparent;
+    border-radius: 30px;
+    border: 3px solid $white;
     &:hover{
-      color: $lite-gray;
-      background: $blue;
+      color: $white;
+      background: $red;
+      border-color: $red;
     }
   }
   &.btn-lg{
@@ -169,8 +172,8 @@ a{
     display: inline-block;
     width: 20px;
     height: 20px;
-    color: $lite-gray;
-    background: $green;
+    color: $white;
+    background: $blue;
     font-size: 16px;
     text-align: center;
     border-radius: 2px;
@@ -214,7 +217,7 @@ a{
   background: $mid-gray;
   padding: 60px 0;
   h3{
-    color: $green;
+    color: $blue;
     .feature-icon{
       margin-right: 15px;
     }
