@@ -257,9 +257,12 @@ body.home{
       h1{
         color: $white;
         font-weight: 900;
-        font-size: 3.5vw;
+        font-size: 3vw;
         margin-bottom: 50px;
         text-shadow: 1px 2px 2px rgba(0,0,0,0.7);
+        span{
+          font-weight: 400;
+        }
       }
       .main-btn{
         color: $white;
@@ -324,15 +327,18 @@ body.home{
     font-weight: 900;
     text-shadow: 1px 2px 2px rgba(0,0,0,0.7);
   }
+  .feature-icon{
+    display: block;
+    margin: 0 auto 10px auto;
+  }
   h3{
     color: $white;
     font-size: 20px;
-    .feature-icon{
-      margin-right: 15px;
-    }
+    text-align: center;
   }
   p{
     color: $white;
+    text-align: center;
   }
 }
 //Form Styles//

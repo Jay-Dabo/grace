@@ -12,7 +12,7 @@ class GroupMembersController < ApplicationController
   # GET /group_members
   # GET /group_members.json
   def index
-    @group_members = GroupMember.all
+    @group_members = @group.group_members
   end
 
   # GET /group_members/1
