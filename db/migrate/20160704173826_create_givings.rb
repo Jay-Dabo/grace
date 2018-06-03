@@ -1,4 +1,4 @@
-class CreateGivings < ActiveRecord::Migration
+class CreateGivings < ActiveRecord::Migration[5.2]
   def change
     create_table :givings do |t|
 

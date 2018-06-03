@@ -4,9 +4,9 @@ require 'cancan/matchers'
 RSpec.describe MembersController, type: :controller do
   #describe with authorized user
   describe "with authorized user" do
-    let(:user){ FactoryGirl.create(:super_admin) }
-    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
-    let(:member){ FactoryGirl.create(:member) }
+    let(:user){ FactoryBot.create(:super_admin) }
+    let(:church){ FactoryBot.create(:church, user_id: user.id) }
+    let(:member){ FactoryBot.create(:member) }
 
     before do
       sign_in user
@@ -68,7 +68,7 @@ RSpec.describe MembersController, type: :controller do
     #describe create action
     describe "POST #create" do
       it "creates a new member" do
-        member_params = FactoryGirl.attributes_for(:member, church_id: church.id)
+        member_params = FactoryBot.attributes_for(:member, church_id: church.id)
         expect{ post :create, church_id: church.id, member: member_params }.to change(Member, :count).by(1)
       end
     end
@@ -91,8 +91,8 @@ RSpec.describe MembersController, type: :controller do
     #describe destroy action
     describe "DELETE #destroy" do
       before do
-        @church = FactoryGirl.create(:church)
-        @member = FactoryGirl.create(:member, church_id: @church.id)
+        @church = FactoryBot.create(:church)
+        @member = FactoryBot.create(:member, church_id: @church.id)
       end
 
       it "deletes a member" do
@@ -103,7 +103,7 @@ RSpec.describe MembersController, type: :controller do
 
   #test with super admin
   describe "with authorized user super admin" do
-    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:user){ FactoryBot.create(:super_admin) }
     let(:ability){ Ability.new(user) }
 
     it "allows the super admin to manage any Member" do
@@ -113,8 +113,8 @@ RSpec.describe MembersController, type: :controller do
 
   #test with admin
   describe "with authorized user admin" do
-    let(:user){ FactoryGirl.create(:admin) }
-    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
+    let(:user){ FactoryBot.create(:admin) }
+    let(:church){ FactoryBot.create(:church, user_id: user.id) }
     let(:ability){ Ability.new(user) }
 
     it "allows the admin to manage their Members" do

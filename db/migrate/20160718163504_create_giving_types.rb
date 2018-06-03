@@ -1,4 +1,4 @@
-class CreateGivingTypes < ActiveRecord::Migration
+class CreateGivingTypes < ActiveRecord::Migration[5.2]
   def change
     create_table :giving_types do |t|
       t.string :type

@@ -5,9 +5,9 @@ RSpec.describe GivingTypesController, type: :controller do
   #Test with authorized user
   describe "with authorized user" do
 
-    let(:user){ FactoryGirl.create(:super_admin) }
-    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
-    let(:giving_type){ FactoryGirl.create(:giving_type, church_id: church.id) }
+    let(:user){ FactoryBot.create(:super_admin) }
+    let(:church){ FactoryBot.create(:church, user_id: user.id) }
+    let(:giving_type){ FactoryBot.create(:giving_type, church_id: church.id) }
 
     before do
       sign_in user
@@ -65,7 +65,7 @@ RSpec.describe GivingTypesController, type: :controller do
     #test create action
     describe "POST #create" do
       it "creates a new giving type" do
-        giving_type_params = FactoryGirl.attributes_for(:giving_type, church_id: church.id)
+        giving_type_params = FactoryBot.attributes_for(:giving_type, church_id: church.id)
         expect{ post :create, church_id: church.id, giving_type: giving_type_params }.to change(GivingType, :count).by(1)
       end
     end
@@ -88,8 +88,8 @@ RSpec.describe GivingTypesController, type: :controller do
     #test destroy action
     describe "DELETE #destroy" do
       before do
-        @church = FactoryGirl.create(:church)
-        @giving_type = FactoryGirl.create(:giving_type, church_id: @church.id)
+        @church = FactoryBot.create(:church)
+        @giving_type = FactoryBot.create(:giving_type, church_id: @church.id)
       end
 
       it "deletes a giving_type" do
@@ -101,7 +101,7 @@ RSpec.describe GivingTypesController, type: :controller do
 
   #Test with Super Admin
   describe "with authorized user Super Admin" do
-    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:user){ FactoryBot.create(:super_admin) }
     let(:ability){ Ability.new(user) }
 
     it "allows the super admin to manage giving types" do
@@ -111,8 +111,8 @@ RSpec.describe GivingTypesController, type: :controller do
 
   #Test with Admin
   describe "with authorized user Admin" do
-    let(:user){ FactoryGirl.create(:admin) }
-    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
+    let(:user){ FactoryBot.create(:admin) }
+    let(:church){ FactoryBot.create(:church, user_id: user.id) }
     let(:ability){ Ability.new(user) }
 
     it "allows the admin to manage their giving types" do

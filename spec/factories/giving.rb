@@ -11,7 +11,7 @@
 #  giving_type_id :integer
 #  church_id      :integer
 #
-FactoryGirl.define do
+FactoryBot.define do
   factory :giving do
     amount "20.00"
     date_given DateTime.now

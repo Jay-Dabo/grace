@@ -1,4 +1,4 @@
-class AddFieldsToGiving < ActiveRecord::Migration
+class AddFieldsToGiving < ActiveRecord::Migration[5.2]
   def change
     add_column :givings, :member_id, :integer
     add_column :givings, :amount, :decimal

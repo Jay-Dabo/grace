@@ -4,7 +4,7 @@ require 'cancan/matchers'
 RSpec.describe ChurchesController, type: :controller do
   #Test with authorized user
   describe "with authorized user" do
-    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:user){ FactoryBot.create(:super_admin) }
     before do
       sign_in user
     end
@@ -24,7 +24,7 @@ RSpec.describe ChurchesController, type: :controller do
 
     #test the show action
     describe "GET #show" do
-      let(:church){ FactoryGirl.create(:church) }
+      let(:church){ FactoryBot.create(:church) }
 
       it "has a 200 response status" do
         get :show, id: church
@@ -53,14 +53,14 @@ RSpec.describe ChurchesController, type: :controller do
     #test the create action
     describe "POST #create" do
       it "creates a new church" do
-        church_params = FactoryGirl.attributes_for(:church)
+        church_params = FactoryBot.attributes_for(:church)
         expect{ post :create, church: church_params }.to change(Church, :count).by(1)
       end
     end
 
     #test the edit action
     describe "PUT #edit" do
-      let(:church){ FactoryGirl.create(:church) }
+      let(:church){ FactoryBot.create(:church) }
       it "has a 200 response status" do
         get :edit, id: church
         expect(response.status).to eq(200)
@@ -75,7 +75,7 @@ RSpec.describe ChurchesController, type: :controller do
     #test the delete action
     describe "DELETE #destroy" do
       before do
-        @church = FactoryGirl.create(:church)
+        @church = FactoryBot.create(:church)
       end
       
       it "deletes a church" do
@@ -87,7 +87,7 @@ RSpec.describe ChurchesController, type: :controller do
 
   #Test with Super Admin
   describe "with authorized user Super Admin" do
-    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:user){ FactoryBot.create(:super_admin) }
     let(:ability){ Ability.new(user) }
 
     it "allows the super admin to manage any church" do
@@ -97,7 +97,7 @@ RSpec.describe ChurchesController, type: :controller do
 
   #Test with Admin
   describe "with authorized user Admin" do
-    let(:user){ FactoryGirl.create(:admin) }
+    let(:user){ FactoryBot.create(:admin) }
     let(:ability){ Ability.new(user) }
 
     it "allows the admin to manage their church" do

@@ -5,11 +5,11 @@ RSpec.describe GivingsController, type: :controller do
   #describe with authorized user
   describe "with authorized user" do
 
-    let(:user){ FactoryGirl.create(:super_admin) }
-    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
-    let(:member){ FactoryGirl.create(:member, church_id: church.id) }
-    let(:giving_type){ FactoryGirl.create(:giving_type, church_id: church.id) }
-    let(:giving){ FactoryGirl.create(:giving, church_id: church.id, member_id: member.id, giving_type_id: giving_type.id) }
+    let(:user){ FactoryBot.create(:super_admin) }
+    let(:church){ FactoryBot.create(:church, user_id: user.id) }
+    let(:member){ FactoryBot.create(:member, church_id: church.id) }
+    let(:giving_type){ FactoryBot.create(:giving_type, church_id: church.id) }
+    let(:giving){ FactoryBot.create(:giving, church_id: church.id, member_id: member.id, giving_type_id: giving_type.id) }
 
     before do
       sign_in user
@@ -67,7 +67,7 @@ RSpec.describe GivingsController, type: :controller do
     #describe create action
     describe "POST #create" do
       it "creates a new giving" do
-        giving_params = FactoryGirl.attributes_for(:giving, church_id: church.id, member_id: member.id, giving_type_id: giving_type.id)
+        giving_params = FactoryBot.attributes_for(:giving, church_id: church.id, member_id: member.id, giving_type_id: giving_type.id)
         expect{ post :create, church_id: church.id, giving: giving_params }.to change(Giving, :count).by(1)
       end
     end
@@ -90,7 +90,7 @@ RSpec.describe GivingsController, type: :controller do
     #describe destroy action
     describe "DELETE #destroy" do
       before do
-        @giving = FactoryGirl.create(:giving)
+        @giving = FactoryBot.create(:giving)
       end
 
       it "deletes a giving" do
@@ -102,7 +102,7 @@ RSpec.describe GivingsController, type: :controller do
 
   #test with super admin
   describe "with authorized user super_admin" do
-    let(:user){ FactoryGirl.create(:super_admin) }
+    let(:user){ FactoryBot.create(:super_admin) }
     let(:ability){ Ability.new(user) }
 
     it "allows a super admin to manage any giving" do
@@ -112,8 +112,8 @@ RSpec.describe GivingsController, type: :controller do
 
   #test with admin
   describe "with authorized user admin" do
-    let(:user){ FactoryGirl.create(:admin) }
-    let(:church){ FactoryGirl.create(:church, user_id: user.id) }
+    let(:user){ FactoryBot.create(:admin) }
+    let(:church){ FactoryBot.create(:church, user_id: user.id) }
     let(:ability){ Ability.new(user) }
 
     it "allows an admin to manage their givings" do

@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :group do
     name "MyString"
     description "MyText"

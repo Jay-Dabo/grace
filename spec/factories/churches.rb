@@ -11,7 +11,7 @@
 #  user_id      :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :church do
     name "Sample Church"
     denomination "Church of Christ"
