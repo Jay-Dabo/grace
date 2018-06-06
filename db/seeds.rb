@@ -8,11 +8,11 @@ require "faker"
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 STDOUT.sync = true
 
-# puts "Super Admins"
-# User.find_or_create_by(email: "mike@mikelangston.me").update_attributes(password: "Nicole03", password_confirmation: "Nicole03", :confirmed_at => Date.yesterday)
-# u = User.find_by(email: "mike@mikelangston.me")
-# u.add_role("super_admin")
-# print "."
+puts "Super Admins"
+User.find_or_create_by(email: "mike@mikelangston.me").update_attributes(password: "Nicole03", password_confirmation: "Nicole03", :confirmed_at => Date.yesterday)
+u = User.find_by(email: "mike@mikelangston.me")
+u.add_role("super_admin")
+print "."
 
 if Rails.env == "development"
   Member.destroy_all
