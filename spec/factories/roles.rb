@@ -2,12 +2,12 @@
 #
 # Table name: roles
 #
-#  id            :integer          not null, primary key
+#  id            :bigint(8)        not null, primary key
 #  name          :string
-#  resource_id   :integer
 #  resource_type :string
-#  created_at    :datetime
-#  updated_at    :datetime
+#  resource_id   :bigint(8)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 
 FactoryBot.define do

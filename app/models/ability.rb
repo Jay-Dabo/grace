@@ -14,9 +14,7 @@ class Ability
     if user.has_role? :super_admin
       can :manage, :all
     elsif user.has_role? :admin
-      can :manage, Church, :user_id => user.id
-      can :manage, [Member, Giving, GivingType, Group], church: { user_id: user.id }
-      can :manage, GroupMember, group: { church: { user_id: user.id } }
+      can :manage, :all
 
     elsif user.has_role? :assistant
 
