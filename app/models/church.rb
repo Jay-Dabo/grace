@@ -11,7 +11,6 @@
 #
 
 class Church < ActiveRecord::Base
-  # belongs_to :user
   has_many :users
   has_many :members, dependent: :destroy
   has_many :givings, dependent: :destroy

@@ -29,8 +29,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # has_one :church, dependent: :destroy
-  belongs_to :church 
+  belongs_to :church
   accepts_nested_attributes_for :church
 
   validates :email, :encrypted_password, presence: true
