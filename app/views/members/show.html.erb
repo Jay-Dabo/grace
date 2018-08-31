@@ -9,5 +9,5 @@
   <p><strong>Interest/Description:</strong><br/><%= @member.interest %></p>
 </div>
 <div class="col-md-3">
-  <%= image_tag(@member.member_image_url(:large), class: "img-responsive") %>
+  <%= image_tag(@member.member_image_url(:large), class: "img-responsive") if @member.member_image_url %>
 </div>

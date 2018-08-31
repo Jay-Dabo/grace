@@ -1,50 +1,54 @@
-<div class="col-md-8">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title text-center">Givings this Month</h3>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Givings this Month</h3>
+      </div>
+      <div class="panel-body">
+        <p class="huge-tile-text sm"><%= number_to_currency(@monthly_givings, precision: 0) %></p>
+      </div>
     </div>
-    <div class="panel-body">
-      <%= bar_chart @monthly_givings.group(:church_id).sum(:amount), xtitle: "Dollar Amount", ytitle: "#{(Time.now).strftime("%b")}", height: "200px", download: true, download: "Givings" %>
+  </div>
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Year to Date Givings</h3>
+      </div>
+      <div class="panel-body">
+        <%= line_chart @year_to_date, xtitle: "Month", ytitle: "Total Givings", height: "200px", download: true, download: "GivingsByMonth" %>
+      </div>
     </div>
   </div>
 </div>
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title text-center">Total Members</h3>
-    </div>
-    <div class="panel-body">
-      <%= column_chart @members.group(:church_id).count, xtitle: "Church", ytitle: "Total Members", height: "200px", download: true, download: "Members" %>
-    </div>
-  </div>
-</div>
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title text-center">Total Givings by Month</h3>
-    </div>
-    <div class="panel-body">
-      <%= line_chart @givings.group_by_month(:date_given).count, xtitle: "Month", ytitle: "Total Givings", height: "200px", download: true, download: "GivingsByMonth" %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Total Members</h3>
+      </div>
+      <div class="panel-body">
+        <p class="huge-tile-text"><%= @members.count %></p>
+      </div>
     </div>
   </div>
-</div>
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title text-center">Giving Types</h3>
-    </div>
-    <div class="panel-body">
-      <%= pie_chart @givings.joins(:giving_type).group("giving_types.name").count, height: "200px", download: true, download: "GivingTypes" %>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Giving Types</h3>
+      </div>
+      <div class="panel-body">
+        <%= pie_chart @givings.joins(:giving_type).group("giving_types.name").sum(:amount), prefix: '$', height: "200px", download: true, download: "GivingTypes" %>
+      </div>
     </div>
   </div>
-</div>
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title text-center">Groups</h3>
-    </div>
-    <div class="panel-body">
-      <%= pie_chart @groups.joins(:group_members).group("groups.name").count, height: "200px", download: true, download: "Groups" %>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Groups</h3>
+      </div>
+      <div class="panel-body">
+        <%= pie_chart @groups, height: "200px", download: true, download: "Groups" %>
+      </div>
     </div>
   </div>
 </div>

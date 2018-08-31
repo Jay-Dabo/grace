@@ -31,7 +31,7 @@ class Member < ActiveRecord::Base
   validates :email, uniqueness: true
 
   include PgSearch
-  pg_search_scope :search_members, against: [:first_name, :last_name, :email]
+  pg_search_scope :search_members, against: [:first_name, :last_name, :email], using: { tsearch: { any_word: true } }
 
   ValidGenders = %w[N/A female male]
 

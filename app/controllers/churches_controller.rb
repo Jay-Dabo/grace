@@ -15,9 +15,12 @@ class ChurchesController < ApplicationController
   def show
     @members = @church.members
     @givings = @church.givings
-    @monthly_givings = @church.givings.where(date_given: Time.now.beginning_of_month..Time.now.end_of_month)
+    @year_to_date = @givings.where(date_given: Time.now.beginning_of_year..Time.now.end_of_month).
+      group_by_month(:date_given).sum(:amount)
+    @monthly_givings = @church.givings.where(date_given: Time.now.beginning_of_month..Time.now.end_of_month).
+      sum(:amount)
     @giving_types = @church.giving_types
-    @groups = @church.groups
+    @groups = @church.groups.joins(:group_members).group("groups.name").count
   end
 
   # GET /churches/new
