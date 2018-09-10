@@ -1,9 +1,7 @@
 class GroupMembersController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource :church
-  load_and_authorize_resource :group
-  load_and_authorize_resource :group_member, through: :group
   before_action :set_church
+  before_action :authorize_church?
   before_action :set_group
   before_action :set_members
   before_action :set_group_member, only: [:show, :edit, :update, :destroy]
@@ -76,7 +74,7 @@ class GroupMembersController < ApplicationController
     end
 
     def set_church
-      @church = current_user.church
+      @church = Church.find(params[:church_id])
     end
 
     def set_group

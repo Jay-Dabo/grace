@@ -1,9 +1,9 @@
 class GivingTypesController < ApplicationController
-  before_action :set_church
-  before_action :set_giving_type, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  load_and_authorize_resource :church
-  load_and_authorize_resource :giving_type, through: :church
+  before_action :set_church
+  before_action :authorize_church?
+  before_action :set_giving_type, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_giving_type?, except: [:index]
   helper_method :sort_column, :sort_direction
   layout "admin"
 
@@ -51,6 +51,7 @@ class GivingTypesController < ApplicationController
   # PATCH/PUT /giving_types/1
   # PATCH/PUT /giving_types/1.json
   def update
+    authorize @giving_type
     respond_to do |format|
       if @giving_type.update(giving_type_params)
         format.html { redirect_to [@church, @giving_type], notice: 'Giving type was successfully updated.' }
@@ -87,8 +88,13 @@ class GivingTypesController < ApplicationController
     end
 
     def set_church
-      @church = current_user.church
+      @church = Church.find(params[:church_id])
     end
+
+    def authorize_giving_type?
+      authorize @giving_type
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def giving_type_params

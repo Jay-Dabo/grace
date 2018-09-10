@@ -1,11 +1,11 @@
 class GivingsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource :church
-  load_and_authorize_resource :giving, through: :church
   before_action :set_church
+  before_action :authorize_church?
   before_action :set_members
   before_action :set_giving_types
   before_action :set_giving, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_giving?, except: [:index]
   helper_method :sort_column, :sort_direction
   layout "admin"
 
@@ -90,7 +90,7 @@ class GivingsController < ApplicationController
     end
 
     def set_church
-      @church = current_user.church
+      @church = Church.find(params[:church_id])
     end
 
     def set_members
@@ -99,6 +99,10 @@ class GivingsController < ApplicationController
 
     def set_giving_types
       @giving_types = current_user.church.giving_types
+    end
+
+    def authorize_giving?
+      authorize @giving
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

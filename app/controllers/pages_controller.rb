@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_church
+
   def index
     @body_class = "home"
   end
@@ -15,12 +16,5 @@ class PagesController < ApplicationController
   def pricing
     @body_class = "pricing"
   end
-
-  private
-
-    def set_church
-      if current_user
-        @church = current_user.church
-      end
-    end
+  
 end

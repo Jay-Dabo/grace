@@ -1,9 +1,9 @@
 class MembersController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource :church
-  load_and_authorize_resource :member, through: :church
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :set_church
+  before_action :authorize_church?
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_member?, except: [:index]
   helper_method :sort_column, :sort_direction
   layout "admin"
 
@@ -87,7 +87,11 @@ class MembersController < ApplicationController
     end
 
     def set_church
-      @church = current_user.church
+      @church = Church.find(params[:church_id])
+    end
+
+    def authorize_member?
+      authorize @member
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

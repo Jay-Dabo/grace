@@ -1,9 +1,9 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_church
+  before_action :authorize_church?
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource :church
-  load_and_authorize_resource :group, through: :church
+  before_action :authorize_group?, except: [:index]
   helper_method :sort_column, :sort_direction
   layout "admin"
 
@@ -88,7 +88,11 @@ class GroupsController < ApplicationController
     end
 
     def set_church
-      @church = current_user.church
+      @church = Church.find(params[:church_id])
+    end
+
+    def authorize_group?
+      authorize @group
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
