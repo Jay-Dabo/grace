@@ -3,7 +3,7 @@ class GivingTypesController < ApplicationController
   before_action :set_church
   before_action :authorize_church?
   before_action :set_giving_type, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_giving_type?, except: [:index]
+  before_action :authorize_giving_type?, except: [:index, :new, :create]
   helper_method :sort_column, :sort_direction
   layout "admin"
 

@@ -5,7 +5,7 @@ class GivingsController < ApplicationController
   before_action :set_members
   before_action :set_giving_types
   before_action :set_giving, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_giving?, except: [:index]
+  before_action :authorize_giving?, except: [:index, :new, :create]
   helper_method :sort_column, :sort_direction
   layout "admin"
 
@@ -94,7 +94,7 @@ class GivingsController < ApplicationController
     end
 
     def set_members
-      @members = current_user.church.members.order("first_name ASC")
+      @members = current_user.church.members.order("last_name ASC")
     end
 
     def set_giving_types

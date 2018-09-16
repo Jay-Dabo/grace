@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, required: true, label: false, placeholder: "Group Name", input_html: { class: "form-control" } %>
+    <%= f.input :name, required: true, label: false, placeholder: "Group Name", input_html: { class: "form-control", autocomplete: "off" } %>
     <%= f.input :description, label: false, placeholder: "Short description of Group", input_html: { class: "form-control" } %>
     <%= f.input :group_image, as: :file, label: "Upload a Group Image", input_html: { class: "form-control" } %>
   </div>

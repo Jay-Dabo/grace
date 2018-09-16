@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :member_id, collection: @members, label_method: "full_name", label_value: "member_id", input_html: { class: "form-control" } %>
+    <%= f.input :member_id, collection: @members.order("last_name ASC"), label_method: "full_name", label_value: "member_id", input_html: { class: "form-control" } %>
   </div>
 
   <div class="form-actions">

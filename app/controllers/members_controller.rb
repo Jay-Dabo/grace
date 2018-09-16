@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   before_action :set_church
   before_action :authorize_church?
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_member?, except: [:index]
+  before_action :authorize_member?, except: [:index, :new, :create]
   helper_method :sort_column, :sort_direction
   layout "admin"
 

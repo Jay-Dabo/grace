@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_church
   before_action :authorize_church?
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_group?, except: [:index]
+  before_action :authorize_group?, except: [:index, :new, :create]
   helper_method :sort_column, :sort_direction
   layout "admin"
 

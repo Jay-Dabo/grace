@@ -9,9 +9,19 @@
       <h3 class="panel-title">Group Members</h3>
     </div>
     <div class="panel-body">
+      <% if @group_members.present? %>
       <div id="church-data">
-        <%= render partial: "group_members" if @group_members.present? %>
+        <%= render partial: "group_members" %>
       </div>
+      <% else %>
+        <div class="alert alert-warning">
+          <h4 class="alert-heading">Group Members</h4>
+          <p>
+            You haven't added any members to this group. Let's get started by
+            <%= link_to "adding members", new_church_group_group_member_path(@church, @group), class: "alert-link" %>  now!
+          </p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
