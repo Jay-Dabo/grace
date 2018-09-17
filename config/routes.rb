@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :churches do
+    resources :subscriptions
     resources :members
     resources :givings
     resources :giving_types
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
   get 'contact' => 'pages#contact'
   get 'pricing' => 'pages#pricing'
+
+  post 'charge' => 'subscriptions#create'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

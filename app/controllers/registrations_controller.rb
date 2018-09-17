@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
     def after_sign_up_path_for(resource)
-      church_path(resource.church_id)
+      new_church_subscription_path(resource.church_id)
     end
 
     def after_inactive_sign_up_path_for(resource)
