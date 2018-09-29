@@ -10,7 +10,10 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = @church.groups.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    @groups = @church.groups.search(params[:search])
+                     .order(sort_column + " " + sort_direction)
+                     .paginate(page: params[:page])
+
     respond_to do |format|
       format.html
       format.csv { send_data @groups.to_csv }
@@ -21,7 +24,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group_members = @group.group_members
+    @group_members = @group.group_members.includes(:member)
   end
 
   # GET /groups/new

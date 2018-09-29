@@ -13,7 +13,11 @@ class GivingsController < ApplicationController
   # GET /givings.json
   def index
     @monthly_givings = @church.givings.where(date_given: Time.now.beginning_of_month..Time.now.end_of_month)
-    @givings = @church.givings.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    @givings = @church.givings.includes(:member).includes(:giving_type)
+                      .search(params[:search])
+                      .order(sort_column + " " + sort_direction)
+                      .paginate(page: params[:page])
+
     respond_to do |format|
       format.html
       format.csv { send_data @givings.to_csv }
