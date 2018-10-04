@@ -3,12 +3,12 @@ class RegistrationsController < Devise::RegistrationsController
 
     def sign_up_params
       params.require(:user).permit(:email, :password, :password_confirmation,
-        church_attributes: [:id, :name, :denomination, :church_image])
+        church_attributes: [:name, :denomination, :church_image])
     end
 
     def account_update_params
       params.require(:user).permit(:email, :password, :password_confirmation,
-        church_attributes: [:id, :name, :denomination, :church_image])
+        church_attributes: [:name, :denomination, :church_image])
     end
 
   protected

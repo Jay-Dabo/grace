@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   belongs_to :church
   accepts_nested_attributes_for :church
 
-  validates :email, :encrypted_password, presence: true
+  validates :email, :encrypted_password, presence: true, uniqueness: {scope: :church_id}
 
   def assign_default_role
     add_role(:admin)
