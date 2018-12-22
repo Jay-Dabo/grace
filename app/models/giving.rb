@@ -12,7 +12,7 @@
 #  church_id      :integer
 #
 
-class Giving < ActiveRecord::Base
+class Giving < ApplicationRecord
   belongs_to :church
   belongs_to :member
   belongs_to :giving_type

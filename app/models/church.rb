@@ -10,12 +10,13 @@
 #  updated_at   :datetime         not null
 #
 
-class Church < ActiveRecord::Base
+class Church < ApplicationRecord
   has_many :users
   has_many :members, dependent: :destroy
   has_many :givings, dependent: :destroy
   has_many :giving_types, dependent: :destroy
   has_many :groups, dependent: :destroy
+  has_one :subscription, dependent: :destroy
   mount_uploader :church_image, ChurchUploader
 
   validates :name, :denomination, presence: true

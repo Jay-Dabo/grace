@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_212556) do
+ActiveRecord::Schema.define(version: 2018_12_22_212014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,15 @@ ActiveRecord::Schema.define(version: 2018_07_25_212556) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "church_id"
+    t.string "subscription_id"
+    t.string "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["church_id"], name: "index_subscriptions_on_church_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -121,4 +130,5 @@ ActiveRecord::Schema.define(version: 2018_07_25_212556) do
   add_foreign_key "giving_types", "churches"
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "members"
+  add_foreign_key "subscriptions", "churches"
 end

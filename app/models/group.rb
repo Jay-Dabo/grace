@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Group < ActiveRecord::Base
+class Group < ApplicationRecord
   belongs_to :church
   has_many :group_members, dependent: :destroy
   mount_uploader :group_image, GroupUploader
@@ -38,5 +38,5 @@ class Group < ActiveRecord::Base
       end
     end
   end
-  
+
 end

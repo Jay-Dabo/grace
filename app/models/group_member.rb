@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class GroupMember < ActiveRecord::Base
+class GroupMember < ApplicationRecord
   belongs_to :group
   belongs_to :member
 

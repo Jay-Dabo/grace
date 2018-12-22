@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class GivingType < ActiveRecord::Base
+class GivingType < ApplicationRecord
   belongs_to :church
   has_many :givings, dependent: :destroy
 

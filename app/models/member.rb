@@ -20,7 +20,7 @@
 #  interest     :text
 #
 
-class Member < ActiveRecord::Base
+class Member < ApplicationRecord
   belongs_to :church
   has_many :givings, dependent: :destroy
   has_many :group_members
