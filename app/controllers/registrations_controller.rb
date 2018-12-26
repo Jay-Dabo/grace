@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+  skip_before_action :ensure_subscription
   layout 'plain'
-  
+
   private
 
     def sign_up_params

@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  skip_before_action :ensure_subscription
   require 'stripe'
   layout 'plain'
 

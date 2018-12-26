@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_church
+  skip_before_action :ensure_subscription
 
   def index
     @body_class = "home"
@@ -16,5 +17,5 @@ class PagesController < ApplicationController
   def pricing
     @body_class = "pricing"
   end
-  
+
 end

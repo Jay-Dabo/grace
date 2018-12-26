@@ -12,4 +12,6 @@
 
 class Subscription < ApplicationRecord
   belongs_to :church
+
+  validates :church_id, :subscription_id, :customer_id, presence: true
 end

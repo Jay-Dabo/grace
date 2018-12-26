@@ -83,7 +83,7 @@ function stripe_init_payments(){
 function flash_messages(){
   setTimeout(function(){
     jQuery('.alert.fade-out').fadeOut('slow');
-  }, 2500);
+  }, 5000);
 }
 
 function init_datepicker(){

@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
   before_action :set_church
-  #after_action :verify_authorized
+  before_action :ensure_subscription
+  # after_action :verify_authorized
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -14,19 +15,32 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def set_church
-      if current_user
-        @church = current_user.church
-      end
-    end
 
-    def user_not_authorized
-      flash[:alert] = "You are not authorized to perform this action."
-      redirect_to(request.referrer || root_path)
+  def set_church
+    if current_user
+      @church = current_user.church
     end
+  end
 
-    def authorize_church?
-      authorize @church, :nested_resources?
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
+  end
+
+  def authorize_church?
+    authorize @church, :nested_resources?
+  end
+
+  def current_church
+    @current_church ||= current_user.church if current_user
+  end
+
+  def ensure_subscription
+    unless current_church.subscription.present?
+      flash[:alert] = "Looks like you don't have a subscription! Please create a subscription to continue."
+      redirect_to new_church_subscription_path(current_church.id)
     end
+  end
 
+  helper_method :current_church
 end
