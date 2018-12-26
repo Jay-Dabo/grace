@@ -4,3 +4,13 @@
   Static version of css will use Glyphicons sprites by default
   =require twitter-bootstrap-static/sprites
 */
+.navbar-default .navbar-nav>.open>a {
+  background-color: transparent !important;
+}
+li.dropdown ul.dropdown-menu li a {
+  color: #394671 !important;
+}
+li.dropdown ul.dropdown-menu li a:hover {
+  color: #7e2c2c !important;
+  background-color: transparent !important;
+}
