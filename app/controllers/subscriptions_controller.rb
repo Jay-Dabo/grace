@@ -23,7 +23,8 @@ class SubscriptionsController < ApplicationController
 
     stripe_subscription = Stripe::Subscription.create({
       customer: stripe_customer.id,
-      items: [{ plan: 'plan_DcNItmWIOlWImY' }]
+      items: [{ plan: 'plan_DcNItmWIOlWImY' }],
+      trial_period_days: 30
     })
 
     subscription = Subscription.new(church_id: current_user.church_id,
