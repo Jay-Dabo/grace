@@ -21,6 +21,11 @@
 body{
   font-family: $body-font;
   background: #F7F7F7;
+  #main-content{
+    width: calc(100% - 100px);
+    padding-top: 125px;
+    float: right;
+  }
   .main-content{
     padding-top: 50px;
     padding-bottom: 50px;
@@ -65,7 +70,10 @@ a{
 }
 //Navigation Styles//
 .navbar-wrapper{
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
   background: url('nav-bg.jpg') no-repeat center center;
   background-size: cover;
@@ -98,7 +106,8 @@ a{
   }
 }
 //Side Navigation Styles//
-.side-nav-container{
+#side-nav-container{
+  width: 100px;
   padding-top: 50px;
   padding-bottom: 15px;
   background: $white;
@@ -107,20 +116,11 @@ a{
   bottom: 0;
   left: 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.7);
-  h3{
-    font-weight: 900;
-    margin-bottom: 40px;
-    padding-bottom: 10px;
-    text-align: center;
-    border-bottom: 1px solid $red;
-    span{
-      font-weight: 400;
-    }
-  }
 }
 .side-nav{
-  margin: 0;
+  margin: 70px 0 0 0;
   padding: 0;
+  text-align: center;
   li{
     list-style: none;
     border-bottom: 1px solid $lite-gray;
@@ -133,17 +133,20 @@ a{
       color: $blue;
       font-family: $heading-font;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 10px;
       background: $white;
-      padding: 10px 10px 10px 20px;
+      padding: 10px;
       i{
         width: 24px;
+        font-size: 28px;
         text-align: center;
+        display: block;
+        margin: 0 auto 10px auto;
       }
       &:hover{
-        color: $white;
+        color: $red;
         text-decoration: none;
-        background: $blue;
+        background: $white;
       }
     }
   }
@@ -252,6 +255,7 @@ a{
 body.home{
   .navbar-wrapper{
     background: none;
+    position: relative;
   }
 }
 .banner{

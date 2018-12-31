@@ -1,11 +1,13 @@
 <%= render "shared/head" %>
-  <div class="container-fluid main-content">
-    <div class="col-md-10 col-md-push-2">
-      <%= yield %>
+  <div id="main-content">
+    <div class="container-fluid">
+      <div class="col-md-12">
+        <%= yield %>
+      </div>
     </div>
-    <div class="col-md-2 col-md-pull-10 side-nav-container">
-      <%= render "shared/side_nav" %>
-    </div>
+  </div>
+  <div id="side-nav-container">
+    <%= render "shared/side_nav" %>
   </div>
 </body>
 </html>
