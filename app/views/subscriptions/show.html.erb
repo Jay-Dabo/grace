@@ -1,5 +1,10 @@
+<h1><%= @church.name %></h1>
+<p>
+  You are currently subscribed to GraceInteractive's Monthly Plan with a
+  recurring charge of <strong><%= number_to_currency(@subscription.charge_amount / 100.0) %></strong>
+</p>
 <%= link_to "Cancel Subscription",
   church_subscription_path(@church, @subscription),
   method: :delete,
   class: "btn main-btn",
-  notice: "Canceling Subscription" %>
+  data: { confirm: "Canceling your subscription will not cancel your account, it will only cancel your monthly charges and limit your access to GraceInteractive. Do you want to continue?" } %>

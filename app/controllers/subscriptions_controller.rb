@@ -28,7 +28,9 @@ class SubscriptionsController < ApplicationController
 
     subscription = Subscription.new(church_id: current_user.church_id,
                                     subscription_id: stripe_subscription.id,
-                                    customer_id: stripe_customer.id)
+                                    customer_id: stripe_customer.id,
+                                    plan_id: stripe_subscription.plan.id,
+                                    charge_amount: stripe_subscription.plan.amount)
 
     if subscription.save
       flash[:notice] = "Successfully created a subscription."

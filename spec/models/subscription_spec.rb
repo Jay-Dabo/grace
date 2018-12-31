@@ -8,6 +8,8 @@
 #  customer_id     :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  plan_id         :string
+#  charge_amount   :integer
 #
 
 require 'rails_helper'

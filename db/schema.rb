@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_22_212014) do
+ActiveRecord::Schema.define(version: 2018_12_31_025834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2018_12_22_212014) do
     t.string "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "plan_id"
+    t.integer "charge_amount"
     t.index ["church_id"], name: "index_subscriptions_on_church_id"
   end
 

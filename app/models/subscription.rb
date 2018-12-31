@@ -8,10 +8,12 @@
 #  customer_id     :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  plan_id         :string
+#  charge_amount   :integer
 #
 
 class Subscription < ApplicationRecord
   belongs_to :church
 
-  validates :church_id, :subscription_id, :customer_id, presence: true
+  validates :church_id, :subscription_id, :customer_id, :plan_id, :charge_amount, presence: true
 end

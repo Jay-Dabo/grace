@@ -21,9 +21,10 @@
 body{
   font-family: $body-font;
   background: #F7F7F7;
+  padding-top: 100px;
   #main-content{
     width: calc(100% - 100px);
-    padding-top: 125px;
+    padding-top: 25px;
     float: right;
   }
   .main-content{
@@ -254,6 +255,7 @@ a{
 }
 //Homepage Styles//
 body.home{
+  padding-top: 0;
   .navbar-wrapper{
     background: none;
     position: relative;
