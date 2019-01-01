@@ -1,8 +1,8 @@
 class SubscriptionsController < ApplicationController
+  require 'stripe'
   before_action :set_church, except: [:create]
   before_action :set_subscription, only: [:show, :edit, :destroy]
   skip_before_action :ensure_subscription, except: [:index, :show]
-  require 'stripe'
   layout 'plain', only: [:new, :create]
   layout 'admin', only: [:show, :edit]
 
@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
     stripe_subscription = Stripe::Subscription.create({
       customer: stripe_customer.id,
       items: [{ plan: 'plan_DcNItmWIOlWImY' }],
-      trial_period_days: 30
+      #trial_period_days: 30
     })
 
     subscription = Subscription.new(church_id: current_user.church_id,

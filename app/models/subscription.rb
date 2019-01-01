@@ -13,7 +13,19 @@
 #
 
 class Subscription < ApplicationRecord
+  require 'stripe'
+  before_destroy :cancel_stripe_subscription
   belongs_to :church
 
-  validates :church_id, :subscription_id, :customer_id, :plan_id, :charge_amount, presence: true
+  validates :church_id,
+            :subscription_id,
+            :customer_id,
+            :plan_id,
+            :charge_amount,
+            presence: true
+
+  def cancel_stripe_subscription
+    stripe_subscription = Stripe::Subscription.retrieve(self.subscription_id)
+    stripe_subscription.delete
+  end
 end

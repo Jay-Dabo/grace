@@ -36,6 +36,14 @@
                     <li><%= link_to "User Settings", edit_user_registration_path %></li>
                     <li><%= link_to "Invite Users", "#" %></li>
                     <li><%= link_to "Manage Subscription", church_subscription_path(@church, @church.subscription) if @church.subscription %></li>
+                    <li>
+                      <%= link_to "Cancel Account",
+                        church_path(@church),
+                        method: :delete,
+                        data: {
+                          confirm: "Are you sure? Canceling Account will delete all users and data. It will cancel your monthly subscription and close your account. There will be no retrieving data after this action. Do you want to continue?"
+                        } %>
+                    </li>
                   </ul>
                 </li>
                 <li><%= link_to "Sign Out", destroy_user_session_path, method: "delete" %></li>

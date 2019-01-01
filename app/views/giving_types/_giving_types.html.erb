@@ -19,7 +19,5 @@
     <% end %>
   </tbody>
 </table>
-<div class="panel-body">
-  <div>Download: <%= link_to "CSV", church_giving_types_path(@church, format: "csv") %></div>
-  <%= will_paginate @giving_types %>
-</div>
+<div>Download: <%= link_to "CSV", church_giving_types_path(@church, format: "csv") %></div>
+<%= will_paginate @giving_types %>

@@ -11,7 +11,7 @@
 #
 
 class Church < ApplicationRecord
-  has_many :users
+  has_many :users, dependent: :destroy
   has_many :members, dependent: :destroy
   has_many :givings, dependent: :destroy
   has_many :giving_types, dependent: :destroy

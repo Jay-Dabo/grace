@@ -72,7 +72,7 @@ class ChurchesController < ApplicationController
     authorize @church
     @church.destroy
     respond_to do |format|
-      format.html { redirect_to churches_url, notice: 'Church was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Church was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
