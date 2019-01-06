@@ -43,9 +43,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    stripe_subscription = Stripe::Subscription.retrieve(current_church.subscription.subscription_id)
-    stripe_subscription.delete
-
     @subscription.destroy
     flash[:alert] = "Your Subscription has been cancelled."
     redirect_to root_path
