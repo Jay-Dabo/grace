@@ -1,5 +1,4 @@
 class SubscriptionsController < ApplicationController
-  require 'stripe'
   before_action :set_church, except: [:create]
   before_action :set_subscription, only: [:show, :edit, :destroy]
   skip_before_action :ensure_subscription, except: [:index, :show]
@@ -16,28 +15,15 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    stripe_customer = Stripe::Customer.create({
-      email: current_user.email,
-      source: params[:stripeToken],
-    })
+    response = Subscriptions::CreateSubscription.call(user: current_user,
+                                                      church: current_church,
+                                                      token: params[:stripeToken])
 
-    stripe_subscription = Stripe::Subscription.create({
-      customer: stripe_customer.id,
-      items: [{ plan: 'plan_DcNItmWIOlWImY' }],
-      #trial_period_days: 30
-    })
-
-    subscription = Subscription.new(church_id: current_user.church_id,
-                                    subscription_id: stripe_subscription.id,
-                                    customer_id: stripe_customer.id,
-                                    plan_id: stripe_subscription.plan.id,
-                                    charge_amount: stripe_subscription.plan.amount)
-
-    if subscription.save
-      flash[:notice] = "Successfully created a subscription."
-      redirect_to church_path(current_user.church_id)
+    if response.success?
+      flash[:notice] = response[:success_message]
+      redirect_to church_path(current_church.id)
     else
-      flash[:notice] = "Subscription can't be created at this time."
+      flash[:notice] = response[:error_message]
       redirect_to root_path
     end
   end

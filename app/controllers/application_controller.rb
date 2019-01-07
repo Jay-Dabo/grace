@@ -36,8 +36,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_subscription
-    unless current_church.subscription.present?
-      flash[:alert] = "Looks like you don't have a subscription! Please create a subscription to continue."
+    response = Subscriptions::EnsureSubscription.call(church: current_church)
+
+    if response.error?
+      flash[:alert] = response[:error_message]
       redirect_to new_church_subscription_path(current_church.id)
     end
   end
